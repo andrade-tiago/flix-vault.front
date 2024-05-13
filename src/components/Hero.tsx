@@ -22,7 +22,7 @@ export default function Hero() {
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. In pellentesque commodo diam, in facilisis mi eleifend eget. Suspendisse eu ante eu metus tincidunt vulputate. Ut libero lacus, feugiat ac velit eu, porttitor elementum quam.
         </p>
 
-        <PlayButton />
+        <PlayButton className="shadow-amber-500" />
 
         <ChevronDown className="mt-5" />
       </div>
