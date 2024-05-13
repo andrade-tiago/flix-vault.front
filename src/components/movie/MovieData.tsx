@@ -8,7 +8,7 @@ interface MovieDataProps {
 
 export default function MovieData({year, duration, rating}: MovieDataProps) {
   return (
-    <div className="flex text-gray-200 items-baseline w-full max-w-48 justify-between">
+    <div className="flex items-baseline w-full max-w-48 justify-between">
       <span title="Ano de lançamento">{year}</span>
 
       <span title="Duração">{duration} min</span>
