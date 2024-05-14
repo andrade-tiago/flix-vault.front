@@ -15,7 +15,7 @@ export default function PlayButton({ className }: PlayButtonProps) {
         px-6 items-center uppercase tracking-widest
         text-sm font-medium shadow-2xl outline-none
         focus:outline-dashed focus:outline-1
-        focus:outline-gray-300`,
+        focus:outline-gray-300 w-min`,
         className
       )}
     >
