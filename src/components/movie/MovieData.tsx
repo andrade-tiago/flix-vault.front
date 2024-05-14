@@ -16,7 +16,7 @@ export default function MovieData({year, duration, rating}: MovieDataProps) {
       <div title="Avaliação" className="flex items-baseline gap-1">
         <Star className="text-yellow-500 size-5 translate-y-0.5" />
         <div>
-          <span className="text-xl">{rating.toFixed(1)}</span>
+          <span className="text-lg">{rating.toFixed(1)}</span>
           <span>/10</span>
         </div>
       </div>
