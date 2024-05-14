@@ -14,7 +14,7 @@ export default function Carousel({ children }: CarouselProps) {
   }, [])
 
   return (
-    <motion.div
+    <div
       ref={carousel}
       className="cursor-grab overflow-hidden active:cursor-grabbing w-auto"
     >
@@ -24,6 +24,6 @@ export default function Carousel({ children }: CarouselProps) {
         dragConstraints={{ right: 0, left: - width }}
         children={children}
       ></motion.div>
-    </motion.div>
+    </div>
   ) 
 }
