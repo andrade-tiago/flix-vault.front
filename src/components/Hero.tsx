@@ -7,7 +7,7 @@ export default function Hero() {
   const bannerIMG = "https://miro.medium.com/v2/resize:fit:1400/1*1mXR8N_HiaAl8GLT0Kd4ZA.jpeg"
 
   return (
-    <div className="relative pt-48 pb-20 bg-gradient-to-b from-transparent to-gray-950 px-4">
+    <div className="relative pt-48 pb-20 bg-gradient-to-t from-gray-950 px-4">
       {/* background-image */} <img
         src={bannerIMG} alt="Banner"
         className="absolute w-full h-full object-cover -z-10 top-0 left-0 opacity-50"
