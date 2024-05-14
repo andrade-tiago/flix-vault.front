@@ -1,8 +1,8 @@
 import { motion } from "framer-motion"
-import { ReactElement, useEffect, useRef, useState } from "react"
+import { ReactNode, useEffect, useRef, useState } from "react"
 
 interface CarouselProps {
-  children: ReactElement | ReactElement[]
+  children: ReactNode
 }
 
 export default function Carousel({ children }: CarouselProps) {
@@ -16,10 +16,10 @@ export default function Carousel({ children }: CarouselProps) {
   return (
     <div
       ref={carousel}
-      className="cursor-grab overflow-hidden active:cursor-grabbing w-auto"
+      className="cursor-grab overflow-hidden active:cursor-grabbing w-auto relative"
     >
       <motion.div
-        className="inline-flex w-auto gap-8 p-8"
+        className="inline-flex w-auto gap-8 py-4 px-3 sm:px-5 md:px-7 xl:px-9"
         drag="x"
         dragConstraints={{ right: 0, left: - width }}
         children={children}
