@@ -11,7 +11,10 @@ export default function Carousel({ children }: CarouselProps) {
 
   useEffect(() => {
     setWidth(carousel.current!.scrollWidth - carousel.current!.offsetWidth)
-  }, [])
+  }, [
+    carousel.current?.scrollWidth,
+    carousel.current?.offsetWidth,
+  ])
 
   return (
     <div
