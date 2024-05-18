@@ -1,25 +1,37 @@
 import { ChevronDown } from "lucide-react"
-import movieTitle from "../img/rogue1.png"
 import MovieData from "./movie/MovieData"
 import PlayButton from "./movie/PlayButton"
+import { imgBaseURL } from "../services/movie-api"
+import MovieOverview from "../interfaces/movie-overview"
 
-export default function Hero() {
-  const bannerIMG = "https://miro.medium.com/v2/resize:fit:1400/1*1mXR8N_HiaAl8GLT0Kd4ZA.jpeg"
+interface HeroProps {
+  movie: MovieOverview
+}
+
+export default function Hero({ movie }: HeroProps) {
+  const backdropImgURL = imgBaseURL + 'original' + movie.backdropPath
+  const titleImgURL = imgBaseURL + 'w780' + movie.logoPath
 
   return (
     <div className="relative pt-48 pb-20 bg-gradient-to-t from-gray-950 px-4">
       {/* background-image */} <img
-        src={bannerIMG} alt="Banner"
+        src={backdropImgURL} alt="Banner"
         className="absolute w-full h-full object-cover -z-10 top-0 left-0 opacity-50"
       />
 
       <div className="max-w-[660px] mx-auto flex items-center gap-5 flex-col">
-        <img src={movieTitle} alt="Título do filme" className="max-h-32" />
+        <h3>
+          <img src={titleImgURL} alt={movie.title} className="max-w-full" />
+        </h3>
 
-        <MovieData duration={145} year={2020} rating={7} />
+        <MovieData
+          duration={145}
+          year={movie.year}
+          rating={movie.rating}
+        />
 
         <p title="Sinopse" className="text-center text-gray-300">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. In pellentesque commodo diam, in facilisis mi eleifend eget. Suspendisse eu ante eu metus tincidunt vulputate. Ut libero lacus, feugiat ac velit eu, porttitor elementum quam.
+          {movie.overview}
         </p>
 
         <PlayButton className="shadow-amber-500" />

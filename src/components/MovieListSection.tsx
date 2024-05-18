@@ -1,30 +1,22 @@
-import { Movie } from "../interfaces/movies-api/movie-list"
+import MovieOverview from "../interfaces/movie-overview"
 import Carousel from "./Carousel"
 import MovieCard from "./movie/MovieCard"
 
 interface MovieListSectionProps {
   title: string
-  movieList: Movie[]
+  movieList: MovieOverview[]
 }
 
-export default function MovieListSection(props: MovieListSectionProps) {
+export default function MovieListSection({ title, movieList }: MovieListSectionProps) {
   return (
     <section>
       <h3 className="px-3 sm:px-5 md:px-7 xl:px-9 font-medium text-2xl">
-        {props.title}
+        {title}
       </h3>
 
       <Carousel>
-        {props.movieList.map((movie) => (
-          <MovieCard
-            title={movie.title}
-            description={movie.overview}
-            duration={50}
-            imgPath={movie.poster_path}
-            rating={movie.vote_average}
-            year={new Date(movie.release_date).getFullYear()}
-            key={movie.id}
-          />
+        {movieList.map((movie) => (
+          <MovieCard movie={movie} key={movie.id} />
         ))}
       </Carousel>
     </section>

@@ -1,9 +1,4 @@
-interface Dates {
-  maximum: string
-  minimum: string
-}
-
-export interface Movie {
+interface IMDbMovie {
   adult: boolean
   backdrop_path: string
   genre_ids: number[]
@@ -20,10 +15,13 @@ export interface Movie {
   vote_count: number
 }
 
-export interface MovieList {
-  dates: Dates
+export interface IMDbMovieList {
+  dates: {
+    maximum: string
+    minimum: string
+  }
   page: number
-  results: Movie[]
+  results: IMDbMovie[]
   total_pages: number
   total_results: number
 }

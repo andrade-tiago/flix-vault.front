@@ -1,5 +1,10 @@
 import { Star } from "lucide-react";
-import MovieDataProps from "../../interfaces/movie-data-props";
+
+interface MovieDataProps {
+  year: number
+  duration: number
+  rating: number
+}
 
 export default function MovieData(props: MovieDataProps) {
   return (
