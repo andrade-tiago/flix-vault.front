@@ -2,7 +2,7 @@ import Hero from "../components/Hero";
 import MovieListSection from "../components/MovieListSection";
 import FeaturedMovie from "../components/movie/FeaturedMovie";
 import { IMDbMovieListEndpoint } from "../enums/imdb-movie-list-endpoint";
-import useMovieOverviewList from "../hooks/useMovieOverviewList";
+import useMovieOverviewList from "../hooks/use-movie-overview-list";
 
 export function Home() {
   // Movie lists
