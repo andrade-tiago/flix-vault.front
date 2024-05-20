@@ -1,8 +1,8 @@
 import { IMDbMovieList } from "../interfaces/imdb-api/imdb-movie-list"
 import { movieAPI } from "./movie-api"
-import IMDbMovieDetails from "../interfaces/imdb-api/imdb-movie-details"
 import { IMDbMovieListEndpoint } from "../enums/imdb-movie-list-endpoint"
 import MovieOverview from "../interfaces/movie-overview"
+import getIMDbMovieDetails from "./get-imdb-movie-details"
 
 export default async function getMovieOverviewList(
   listName: IMDbMovieListEndpoint,
@@ -15,13 +15,8 @@ export default async function getMovieOverviewList(
     },
   }).then(json => json.data)
 
-  const getMoviesDetails = movies.results.map(movie => {
-    return movieAPI.get<IMDbMovieDetails>(`movie/${movie.id}`, {
-      params: {
-        language: 'pt',
-        append_to_response: 'images',
-      },
-    })
+  const moviesDetails = movies.results.map(movie => {
+    return getIMDbMovieDetails(movie.id)
       .then(json => json.data)
       .then((movie): MovieOverview => {
         return {
@@ -38,5 +33,5 @@ export default async function getMovieOverviewList(
       })
   })
 
-  return await Promise.all(getMoviesDetails)
+  return await Promise.all(moviesDetails)
 }
