@@ -1,37 +1,29 @@
-import { IMDbMovieList } from "../interfaces/imdb-api/imdb-movie-list"
-import { movieAPI } from "./movie-api"
 import { IMDbMovieListEndpoint } from "../enums/imdb-movie-list-endpoint"
 import MovieOverview from "../interfaces/movie-overview"
 import getIMDbMovieDetails from "./get-imdb-movie-details"
+import getIMDbMovieList from "./get-imdb-movie-list"
 
 export default async function getMovieOverviewList(
   listName: IMDbMovieListEndpoint,
-  page = 1
+  pageNumber = 1
 ): Promise<MovieOverview[]> {
-  const movies = await movieAPI.get<IMDbMovieList>(`movie/${listName}`, {
-    params: {
-      language: 'pt',
-      page: page,
-    },
-  }).then(json => json.data)
+  const movies = await getIMDbMovieList(listName, pageNumber)
 
-  const moviesDetails = movies.results.map(movie => {
-    return getIMDbMovieDetails(movie.id)
-      .then(json => json.data)
-      .then((movie): MovieOverview => {
-        return {
-          backdropPath: movie.backdrop_path,
-          id: movie.id,
-          logoPath: movie.images.logos[0]?.file_path || "",
-          overview: movie.overview,
-          posterPath: movie.poster_path,
-          rating: movie.vote_average,
-          runtime: movie.runtime,
-          title: movie.title,
-          year: new Date(movie.release_date).getFullYear(),
-        }
-      })
+  const movieList = movies.results.map(async movie => {
+    const details = await getIMDbMovieDetails(movie.id)
+
+    return {
+      backdropPath: details.backdrop_path,
+      id: details.id,
+      logoPath: details.images.logos[0]?.file_path || "",
+      overview: details.overview,
+      posterPath: details.poster_path,
+      rating: details.vote_average,
+      runtime: details.runtime,
+      title: details.title,
+      year: new Date(details.release_date).getFullYear(),
+    }
   })
 
-  return await Promise.all(moviesDetails)
+  return Promise.all(movieList)
 }
