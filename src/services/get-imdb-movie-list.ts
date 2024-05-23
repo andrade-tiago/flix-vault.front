@@ -5,8 +5,9 @@ import { movieAPI } from "./movie-api";
 export default async function getIMDbMovieList(listName: IMDbMovieListEndpoint, pageNumber = 1) {
   const movieList = await movieAPI.get<IMDbMovieList>(`movie/${listName}`, {
     params: {
-      language: 'pt',
+      language: 'pt-BR',
       page: pageNumber,
+      region: 'br',
     },
   })
 

@@ -4,7 +4,7 @@ import { movieAPI } from "./movie-api";
 export default async function getIMDbMovieDetails(id: number) {
   const json = await movieAPI.get<IMDbMovieDetails>(`movie/${id}`, {
     params: {
-      language: 'pt',
+      language: 'pt-BR',
       append_to_response: 'images',
     },
   })
