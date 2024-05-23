@@ -24,7 +24,7 @@ export default function MovieCard({ movie } : MovieCardProps) {
             {truncateText(movie.overview, 100)}
           </p>
 
-          <PlayButton />
+          <PlayButton movieId={movie.id} />
         </div>
       </div>
 

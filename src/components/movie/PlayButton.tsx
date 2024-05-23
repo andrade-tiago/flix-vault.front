@@ -1,13 +1,16 @@
 import { Play } from "lucide-react"
+import { Link } from "react-router-dom"
 import { twMerge } from "tailwind-merge"
 
 interface PlayButtonProps {
+  movieId: number
   className?: string
 }
 
-export default function PlayButton({ className }: PlayButtonProps) {
+export default function PlayButton({ movieId, className }: PlayButtonProps) {
   return (
-    <button
+    <Link
+      to={`movie/${movieId}`}
       title="Assistir a este filme"
       className={twMerge(
         `bg-amber-500 text-amber-950
@@ -21,6 +24,6 @@ export default function PlayButton({ className }: PlayButtonProps) {
     >
       <Play className="size-4" />
       <span>Assistir</span>
-    </button>
+    </Link>
   )
 }

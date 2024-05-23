@@ -32,7 +32,7 @@ export default function FeaturedMovie({ movie }: FeaturedMovieProps) {
           {movie.overview}
         </p>
 
-        <PlayButton />
+        <PlayButton movieId={movie.id} />
       </div>
     </section>
   ) 
