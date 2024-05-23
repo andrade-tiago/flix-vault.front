@@ -4,37 +4,37 @@ import FeaturedMovie from "../components/movie/FeaturedMovie";
 import { IMDbMovieListEndpoint } from "../enums/imdb-movie-list-endpoint";
 import useMovieOverviewList from "../hooks/use-movie-overview-list";
 
-export function Home() {
+export default function Home() {
   // Movie lists
-  const { data: inTheaters, isLoading: inTheatersIsLoading } = useMovieOverviewList(IMDbMovieListEndpoint.InTheaters)
-  const { data: popular, isLoading: popularIsLoading } = useMovieOverviewList(IMDbMovieListEndpoint.Popular)
-  const { data: topRated, isLoading: topRatedIsLoading } = useMovieOverviewList(IMDbMovieListEndpoint.TopRated)
-  const { data: upComing, isLoading: upComingIsLoading } = useMovieOverviewList(IMDbMovieListEndpoint.UpComing)
+  const inTheaters = useMovieOverviewList(['in-theaters'], IMDbMovieListEndpoint.InTheaters)
+  const popular = useMovieOverviewList(['popular'], IMDbMovieListEndpoint.Popular)
+  const topRated = useMovieOverviewList(['top-rated'], IMDbMovieListEndpoint.TopRated)
+  const upComing = useMovieOverviewList(['up-coming'], IMDbMovieListEndpoint.UpComing)
 
   return (
     <div className="flex flex-col gap-6">
-      {inTheatersIsLoading || (
+      {inTheaters.data && (
         <>
-          <Hero movie={inTheaters[0]} />
+          <Hero movie={inTheaters.data[0]} />
 
-          <MovieListSection title="Nos cinemas" movieList={inTheaters.slice(1)} />
+          <MovieListSection title="Nos cinemas" movieList={inTheaters.data.slice(1)} />
         </>
       )}
 
-      {popularIsLoading || (
+      {popular.data && (
         <>
-          <FeaturedMovie movie={popular[0]} />
+          <FeaturedMovie movie={popular.data[0]} />
 
-          <MovieListSection title="Em alta" movieList={popular.slice(1)} />
+          <MovieListSection title="Em alta" movieList={popular.data.slice(1)} />
         </>
       )}
 
-      {topRatedIsLoading || (
-        <MovieListSection title="Gosto do público" movieList={topRated} />
+      {topRated.data && (
+        <MovieListSection title="Gosto do público" movieList={topRated.data} />
       )}
 
-      {upComingIsLoading || (
-        <MovieListSection title="Em breve..." movieList={upComing} />
+      {upComing.data && (
+        <MovieListSection title="Em breve..." movieList={upComing.data} />
       )}
     </div>
   )
