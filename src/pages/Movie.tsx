@@ -1,9 +1,11 @@
-import { Link, useNavigate, useParams } from "react-router-dom"
+import { useParams } from "react-router-dom"
 import GenreList from "../components/GenreList"
 import MovieData from "../components/movie/MovieData"
 import useMovieDetails from "../hooks/use-movie-details"
-import { imgBaseURL } from "../services/movie-api"
-import { ChevronLeft } from "lucide-react"
+import { imgBaseURL } from "../services/imdb-api/imdb-api"
+import MovieListSection from "../components/MovieListSection"
+import BackButton from "../components/BackButton"
+import useMovieRecommendationsList from "../hooks/use-movie-recommendations-list"
 
 type RouteParams = {
   id: string
@@ -12,8 +14,9 @@ type RouteParams = {
 export default function Movie() {
   const params = useParams<RouteParams>()
   const id = Number(params.id)
+
   const { data: movie } = useMovieDetails(id)
-  const navigate = useNavigate()
+  const { data: movieRecommendations } = useMovieRecommendationsList(id)
 
   if (!movie) {
     return "Carregando..."
@@ -21,29 +24,27 @@ export default function Movie() {
 
   const backdropImg = imgBaseURL + "original" + movie.backdropPath
   const posterImg = imgBaseURL + "w300" + movie.posterPath
+  const productionCompanies = 
+    movie.productionCompanies.length > 0
+    ? movie.productionCompanies.map(comp => comp.name).join(', ').concat('.')
+    : 'N/A'
 
   return (
     <div>
       <div className="relative bg-gradient-to-t from-gray-950 pt-40 pb-16 min-h-screen px-3">
         {/* background-image */} <img
-          src={backdropImg} alt="Banner"
+          src={backdropImg} alt=""
           className="absolute w-full h-full object-cover -z-10 top-0 left-0 opacity-30"
         />
 
         <div className="flex flex-col gap-10 mx-auto max-w-2xl lg:max-w-6xl">
-          <button
-            onClick={() => navigate(-1)}
-            title="Voltar"
-            className="border rounded-3xl border-gray-400 p-2 w-min"
-          >
-            <ChevronLeft />
-          </button>
+          <BackButton />
 
           <div className="flex flex-col md:flex-row gap-10 items-center md:items-start">
             <div className="flex flex-col items-center md:order-2 w-full">
               <img
                 src={posterImg}
-                alt="Poster"
+                alt=""
                 className="min-w-60 rounded-lg shadow-lg shadow-gray-800 border border-gray-400/20"
               />
             </div>
@@ -74,16 +75,17 @@ export default function Movie() {
                   Título original ({movie.originalLanguage}): {movie.originalTitle}
                 </li>
                 <li>
-                  Produtores: {movie.productionCompanies.length > 0
-                    ? movie.productionCompanies.map(comp => comp.name).join(', ').concat('.')
-                    : 'N/A'
-                  }
+                  Produtores: {productionCompanies}
                 </li>
               </ul>
             </div>
           </div>
         </div>
       </div>
+
+      {movieRecommendations && (
+        <MovieListSection title="Com base neste" movieList={movieRecommendations} />
+      )}
     </div>
   )
 }

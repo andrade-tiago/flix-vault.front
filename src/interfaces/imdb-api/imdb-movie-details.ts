@@ -26,11 +26,6 @@ export default interface IMDbMovieDetails {
   genres: IMDbGenre[]
   homepage: string
   id: number
-  images: {
-    backdrops: IMDbImage[]
-    logos: IMDbImage[]
-    posters: IMDbImage[]
-  }
   imdb_id: string
   original_language: string
   original_title: string

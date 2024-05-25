@@ -1,4 +1,4 @@
-interface IMDbMovie {
+export interface IMDbMovie {
   adult: boolean
   backdrop_path: string
   genre_ids: number[]
@@ -16,10 +16,6 @@ interface IMDbMovie {
 }
 
 export interface IMDbMovieList {
-  dates: {
-    maximum: string
-    minimum: string
-  }
   page: number
   results: IMDbMovie[]
   total_pages: number

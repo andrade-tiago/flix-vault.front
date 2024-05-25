@@ -1,15 +1,15 @@
 import Hero from "../components/Hero";
 import MovieListSection from "../components/MovieListSection";
 import FeaturedMovie from "../components/movie/FeaturedMovie";
-import { IMDbMovieListEndpoint } from "../enums/imdb-movie-list-endpoint";
 import useMovieOverviewList from "../hooks/use-movie-overview-list";
+import { IMDbMovieListEndpoint } from "../services/imdb-api/get-imdb-movie-list";
 
 export default function Home() {
   // Movie lists
-  const inTheaters = useMovieOverviewList(['in-theaters'], IMDbMovieListEndpoint.InTheaters)
-  const popular = useMovieOverviewList(['popular'], IMDbMovieListEndpoint.Popular)
-  const topRated = useMovieOverviewList(['top-rated'], IMDbMovieListEndpoint.TopRated)
-  const upComing = useMovieOverviewList(['up-coming'], IMDbMovieListEndpoint.UpComing)
+  const inTheaters = useMovieOverviewList(IMDbMovieListEndpoint.InTheaters)
+  const popular = useMovieOverviewList(IMDbMovieListEndpoint.Popular)
+  const topRated = useMovieOverviewList(IMDbMovieListEndpoint.TopRated)
+  const upComing = useMovieOverviewList(IMDbMovieListEndpoint.UpComing)
 
   return (
     <div className="flex flex-col gap-6">

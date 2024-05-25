@@ -1,7 +1,7 @@
 import MovieData from "./MovieData"
 import PlayButton from "./PlayButton"
 import truncateText from "../../utils/truncate-text"
-import { imgBaseURL } from "../../services/movie-api"
+import { imgBaseURL } from "../../services/imdb-api/imdb-api"
 import MovieOverview from "../../interfaces/movie-overview"
 
 interface MovieCardProps {

@@ -1,4 +1,4 @@
-interface IMDbImage {
+export default interface IMDbImage {
   aspect_ratio: number
   height: number
   iso_639_1: string
