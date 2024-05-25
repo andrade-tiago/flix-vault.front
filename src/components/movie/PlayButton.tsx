@@ -10,7 +10,7 @@ interface PlayButtonProps {
 export default function PlayButton({ movieId, className }: PlayButtonProps) {
   return (
     <Link
-      to={`movie/${movieId}`}
+      to={`/movie/${movieId}`}
       title="Assistir a este filme"
       className={twMerge(
         `bg-amber-500 text-amber-950
