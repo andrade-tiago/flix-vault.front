@@ -21,7 +21,7 @@ export default function FeaturedMovie({ movie }: FeaturedMovieProps) {
 
       <div className="max-w-xl flex gap-8 flex-col">
         <MovieData
-          duration={movie.runtime}
+          runtime={movie.runtime}
           rating={movie.rating}
           year={movie.year}
         />

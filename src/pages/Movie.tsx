@@ -24,7 +24,7 @@ export default function Movie() {
   const productionCompanies = 
     movie.productionCompanies.length > 0
     ? movie.productionCompanies.map(comp => comp.name).join(', ').concat('.')
-    : 'N/A'
+    : '(indisponível)'
 
   return (
     <div>
@@ -40,7 +40,7 @@ export default function Movie() {
           <BackButton />
 
           <div className="flex flex-col md:flex-row gap-10 items-center md:items-start">
-            <div className="flex flex-col items-center md:order-2 w-full">
+            <div className="flex flex-col items-center md:order-2 w-max">
               {movie.posterPath && (
                 <img
                   src={movie.posterPath}
@@ -50,9 +50,9 @@ export default function Movie() {
               )}
             </div>
 
-            <div className="flex flex-col gap-5 max-w-2xl">
+            <div className="flex flex-col gap-5 w-full max-w-2xl">
               <MovieData
-                duration={movie.runtime}
+                runtime={movie.runtime}
                 rating={movie.rating}
                 year={movie.year}
               />
@@ -66,7 +66,7 @@ export default function Movie() {
               </h1>
 
               <p className="text-gray-300 md:text-justify">
-                {movie.overview}
+                {movie.overview || 'Sinopse indisponível'}
               </p>
 
               <GenreList genres={movie.genres} />
@@ -84,7 +84,7 @@ export default function Movie() {
         </div>
       </div>
 
-      {movieRecommendations && (
+      {movieRecommendations && movieRecommendations.length > 0 && (
         <MovieListSection title="Com base neste" movieList={movieRecommendations} />
       )}
     </div>

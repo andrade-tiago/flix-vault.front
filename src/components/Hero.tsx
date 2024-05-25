@@ -33,7 +33,7 @@ export default function Hero({ movie }: HeroProps) {
         </h3>
 
         <MovieData
-          duration={movie.runtime}
+          runtime={movie.runtime}
           year={movie.year}
           rating={movie.rating}
         />

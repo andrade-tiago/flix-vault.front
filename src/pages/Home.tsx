@@ -13,27 +13,31 @@ export default function Home() {
 
   return (
     <div className="flex flex-col gap-6">
-      {inTheaters.data && (
+      {inTheaters.data && inTheaters.data.length > 0 && (
         <>
           <Hero movie={inTheaters.data[0]} />
 
-          <MovieListSection title="Nos cinemas" movieList={inTheaters.data.slice(1)} />
+          {inTheaters.data.length > 1 && (
+            <MovieListSection title="Nos cinemas" movieList={inTheaters.data.slice(1)} />
+          )}
         </>
       )}
 
-      {popular.data && (
+      {popular.data && popular.data.length > 0 && (
         <>
           <FeaturedMovie movie={popular.data[0]} />
 
-          <MovieListSection title="Em alta" movieList={popular.data.slice(1)} />
+          {popular.data.length > 1 && (
+            <MovieListSection title="Em alta" movieList={popular.data.slice(1)} />
+          )}
         </>
       )}
 
-      {topRated.data && (
+      {topRated.data && topRated.data.length > 0 && (
         <MovieListSection title="Gosto do público" movieList={topRated.data} />
       )}
 
-      {upComing.data && (
+      {upComing.data && upComing.data.length > 0 && (
         <MovieListSection title="Em breve..." movieList={upComing.data} />
       )}
     </div>

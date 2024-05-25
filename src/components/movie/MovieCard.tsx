@@ -2,6 +2,7 @@ import MovieData from "./MovieData"
 import PlayButton from "./PlayButton"
 import truncateText from "../../utils/truncate-text"
 import MovieOverview from "../../interfaces/movie-overview"
+import { twMerge } from "tailwind-merge"
 
 interface MovieCardProps {
   movie: MovieOverview
@@ -19,8 +20,11 @@ export default function MovieCard({ movie } : MovieCardProps) {
         )}
 
         <div className="w-full h-full p-3 bg-gray-950/70 backdrop-blur-sm opacity-0 hover:opacity-100 transition-opacity focus-within:opacity-100 flex flex-col justify-between items-center">
-          <p className="w-full text-gray-100">
-            {truncateText(movie.overview, 100)}
+          <p className={twMerge(
+            'w-full',
+            movie.overview ? 'text-gray-100' : 'text-gray-400'
+          )}>
+            {movie.overview ? truncateText(movie.overview, 100) : 'Sinopse indisponível'}
           </p>
 
           <PlayButton movieId={movie.id} />
@@ -33,7 +37,7 @@ export default function MovieCard({ movie } : MovieCardProps) {
 
       <MovieData
         year={movie.year}
-        duration={movie.runtime}
+        runtime={movie.runtime}
         rating={movie.rating}
       />
     </div>
