@@ -2,7 +2,6 @@ import { useParams } from "react-router-dom"
 import GenreList from "../components/GenreList"
 import MovieData from "../components/movie/MovieData"
 import useMovieDetails from "../hooks/use-movie-details"
-import { imgBaseURL } from "../services/imdb-api/imdb-api"
 import MovieListSection from "../components/MovieListSection"
 import BackButton from "../components/BackButton"
 import useMovieRecommendationsList from "../hooks/use-movie-recommendations-list"
@@ -22,8 +21,6 @@ export default function Movie() {
     return "Carregando..."
   }
 
-  const backdropImg = imgBaseURL + "original" + movie.backdropPath
-  const posterImg = imgBaseURL + "w300" + movie.posterPath
   const productionCompanies = 
     movie.productionCompanies.length > 0
     ? movie.productionCompanies.map(comp => comp.name).join(', ').concat('.')
@@ -32,21 +29,25 @@ export default function Movie() {
   return (
     <div>
       <div className="relative bg-gradient-to-t from-gray-950 pt-40 pb-16 min-h-screen px-3">
-        {/* background-image */} <img
-          src={backdropImg} alt=""
-          className="absolute w-full h-full object-cover -z-10 top-0 left-0 opacity-30"
-        />
+        {movie.backdropPath && (
+          <img
+            src={movie.backdropPath} alt=""
+            className="absolute w-full h-full object-cover -z-10 top-0 left-0 opacity-30"
+          />
+        )}
 
         <div className="flex flex-col gap-10 mx-auto max-w-2xl lg:max-w-6xl">
           <BackButton />
 
           <div className="flex flex-col md:flex-row gap-10 items-center md:items-start">
             <div className="flex flex-col items-center md:order-2 w-full">
-              <img
-                src={posterImg}
-                alt=""
-                className="min-w-60 rounded-lg shadow-lg shadow-gray-800 border border-gray-400/20"
-              />
+              {movie.posterPath && (
+                <img
+                  src={movie.posterPath}
+                  alt=""
+                  className="min-w-60 rounded-lg shadow-lg shadow-gray-800 border border-gray-400/20"
+                />
+              )}
             </div>
 
             <div className="flex flex-col gap-5 max-w-2xl">
