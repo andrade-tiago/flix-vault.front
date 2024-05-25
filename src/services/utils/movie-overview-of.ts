@@ -5,7 +5,7 @@ import { imgBaseURL } from "../imdb-api/imdb-api";
 export default function movieOverviewOf(movie: IMDbMovieDetails): MovieOverview {
   let posterPath = movie.poster_path
   if (posterPath) {
-    posterPath = imgBaseURL + 'w300' + posterPath
+    posterPath = imgBaseURL + 'w185' + posterPath
   }
 
   return {

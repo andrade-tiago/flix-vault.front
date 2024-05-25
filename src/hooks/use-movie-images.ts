@@ -24,9 +24,18 @@ export default function useMovieImages(
       backdropImgPath = imgBaseURL + 'original' + backdropImgPath
     }
 
+    let posterImgPath: string | null =
+      movieImages.posters.find(poster => poster.iso_639_1 == 'pt-BR')?.file_path
+      || movieImages.posters[0].file_path
+      || null
+    if (posterImgPath) {
+      posterImgPath = imgBaseURL + 'w342' + posterImgPath
+    }
+
     return {
       backdropImgPath,
       titleImgPath,
+      posterImgPath,
     }
   }
 

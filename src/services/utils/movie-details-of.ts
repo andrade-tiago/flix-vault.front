@@ -1,27 +1,14 @@
 import IMDbMovieDetails from "../../interfaces/imdb-api/imdb-movie-details";
 import MovieDetails from "../../interfaces/movie-details";
-import { imgBaseURL } from "../imdb-api/imdb-api";
 
 export default function movieDetailsOf(
   movie: IMDbMovieDetails,
 ): MovieDetails {
-  let backdropPath = movie.backdrop_path
-  if (backdropPath) {
-    backdropPath = imgBaseURL + 'original' + backdropPath
-  }
-
-  let posterPath = movie.poster_path
-  if (posterPath) {
-    posterPath = imgBaseURL + 'w300' + posterPath
-  }
-
   return {
-    backdropPath: backdropPath,
     genres: movie.genres,
     originalLanguage: movie.original_language,
     originalTitle: movie.original_title,
     overview: movie.overview,
-    posterPath: posterPath,
     productionCompanies: movie.production_companies,
     rating: movie.vote_average,
     runtime: movie.runtime,

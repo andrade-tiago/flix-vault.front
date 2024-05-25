@@ -5,6 +5,7 @@ import useMovieDetails from "../hooks/use-movie-details"
 import MovieListSection from "../components/MovieListSection"
 import BackButton from "../components/BackButton"
 import useMovieRecommendationsList from "../hooks/use-movie-recommendations-list"
+import useMovieImages from "../hooks/use-movie-images"
 
 type RouteParams = {
   id: string
@@ -16,6 +17,7 @@ export default function Movie() {
 
   const { data: movie } = useMovieDetails(id)
   const { data: movieRecommendations } = useMovieRecommendationsList(id)
+  const { data: movieImages } = useMovieImages(id)
 
   if (!movie) {
     return "Carregando..."
@@ -28,29 +30,29 @@ export default function Movie() {
 
   return (
     <div>
-      <div className="relative bg-gradient-to-t from-gray-950 pt-40 pb-16 min-h-screen px-3">
-        {movie.backdropPath && (
+      <div className="relative bg-gradient-to-t from-gray-950 pt-40 pb-16 min-h-screen px-3 md:px-6">
+        {movieImages?.backdropImgPath && (
           <img
-            src={movie.backdropPath} alt=""
+            src={movieImages.backdropImgPath} alt=""
             className="absolute w-full h-full object-cover -z-10 top-0 left-0 opacity-30"
           />
         )}
 
-        <div className="flex flex-col gap-10 mx-auto max-w-2xl lg:max-w-6xl">
+        <div className="flex flex-col gap-10 mx-auto max-w-2xl sm:max-w-6xl">
           <BackButton />
 
           <div className="flex flex-col md:flex-row gap-10 items-center md:items-start">
-            <div className="flex flex-col items-center md:order-2 w-max">
-              {movie.posterPath && (
+            <div className="flex flex-col items-center md:order-2 w-full max-w-sm">
+              {movieImages?.posterImgPath && (
                 <img
-                  src={movie.posterPath}
+                  src={movieImages.posterImgPath}
                   alt=""
-                  className="min-w-60 rounded-lg shadow-lg shadow-gray-800 border border-gray-400/20"
+                  className="min-w-60 max-w-60 rounded-lg shadow-lg shadow-gray-800 border border-gray-400/20"
                 />
               )}
             </div>
 
-            <div className="flex flex-col gap-5 w-full max-w-2xl">
+            <div className="flex flex-col gap-5 max-w-2xl w-full">
               <MovieData
                 runtime={movie.runtime}
                 rating={movie.rating}
