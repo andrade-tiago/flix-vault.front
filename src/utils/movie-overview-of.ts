@@ -1,6 +1,6 @@
-import IMDbMovieDetails from "../../interfaces/imdb-api/imdb-movie-details";
-import MovieOverview from "../../interfaces/movie-overview";
-import { imgBaseURL } from "../imdb-api/imdb-api";
+import IMDbMovieDetails from "../interfaces/imdb-api/imdb-movie-details";
+import MovieOverview from "../interfaces/movie-overview";
+import { imgBaseURL } from "../services/imdb-api/imdb-api";
 
 export default function movieOverviewOf(movie: IMDbMovieDetails): MovieOverview {
   let posterPath = movie.poster_path

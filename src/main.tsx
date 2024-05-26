@@ -6,7 +6,7 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import Home from './pages/Home.tsx'
 import Movie from './pages/Movie.tsx'
 import { QueryClientProvider } from 'react-query'
-import { queryClient } from './services/query-client.ts'
+import { queryClient } from './services/imdb-api/query-client.ts'
 
 const router = createBrowserRouter([
   {
