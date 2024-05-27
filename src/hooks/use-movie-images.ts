@@ -10,7 +10,6 @@ export default function useMovieImages(
 
     let titleImgPath: string | null = 
       movieImages.logos.find(logo => logo.iso_639_1 === 'pt-BR')?.file_path
-      || movieImages.logos[0].file_path
       || null
     if (titleImgPath) {
       titleImgPath = imgBaseURL + 'w500' + titleImgPath
@@ -18,7 +17,6 @@ export default function useMovieImages(
 
     let backdropImgPath: string | null =
       movieImages.backdrops.find(backdrop => backdrop.iso_639_1 == null)?.file_path
-      || movieImages.logos[0].file_path
       || null
     if (backdropImgPath) {
       backdropImgPath = imgBaseURL + 'original' + backdropImgPath
