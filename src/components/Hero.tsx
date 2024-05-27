@@ -15,7 +15,7 @@ export default function Hero({ movie }: HeroProps) {
     <div className="relative pt-40 pb-20 bg-gradient-to-t from-gray-950 px-4">
       {movieImages.data?.backdropImgPath && (
         <img
-          src={movieImages.data.backdropImgPath} alt="Banner"
+          src={movieImages.data.backdropImgPath} alt=""
           className="absolute w-full h-full object-cover -z-10 top-0 left-0 opacity-50"
         />
       )}
