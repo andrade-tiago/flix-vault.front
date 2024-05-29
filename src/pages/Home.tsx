@@ -1,44 +1,49 @@
 import Hero from "../components/Hero";
-import MovieListSection from "../components/MovieListSection";
-import FeaturedMovie from "../components/movie/FeaturedMovie";
+import MediaListSection from "../components/MovieListSection";
+import FeaturedMovie from "../components/FeaturedMovie";
 import useMovieOverviewList from "../hooks/use-movie-overview-list";
 import { IMDbMovieListEndpoint } from "../services/imdb-api/get-imdb-movie-list";
+import { IMDbTVSeriesListEndpoint } from "../services/imdb-api/get-imdb-tv-list";
+import useSeriesOverviewList from "../hooks/use-series-overview-list";
 
 export default function Home() {
-  // Movie lists
-  const inTheaters = useMovieOverviewList(IMDbMovieListEndpoint.InTheaters)
-  const popular = useMovieOverviewList(IMDbMovieListEndpoint.Popular)
-  const topRated = useMovieOverviewList(IMDbMovieListEndpoint.TopRated)
-  const upComing = useMovieOverviewList(IMDbMovieListEndpoint.UpComing)
+  const movies = {
+    inTheaters: useMovieOverviewList(IMDbMovieListEndpoint.InTheaters),
+    popular: useMovieOverviewList(IMDbMovieListEndpoint.Popular),
+  }
+  const series = {
+    airingToday: useSeriesOverviewList(IMDbTVSeriesListEndpoint.AiringToday),
+    onTheAir: useSeriesOverviewList(IMDbTVSeriesListEndpoint.OnTheAir),
+  }
 
   return (
     <div className="flex flex-col gap-6">
-      {inTheaters.data && inTheaters.data.length > 0 && (
+      {movies.inTheaters.data && movies.inTheaters.data.length > 0 && (
         <>
-          <Hero movie={inTheaters.data[0]} />
+          <Hero movie={movies.inTheaters.data[0]} />
 
-          {inTheaters.data.length > 1 && (
-            <MovieListSection title="Nos cinemas" movieList={inTheaters.data.slice(1)} />
+          {movies.inTheaters.data.length > 1 && (
+            <MediaListSection title="Nos cinemas" mediaList={movies.inTheaters.data.slice(1)} />
           )}
         </>
       )}
 
-      {popular.data && popular.data.length > 0 && (
+      {movies.popular.data && movies.popular.data.length > 0 && (
         <>
-          <FeaturedMovie movie={popular.data[0]} />
+          <FeaturedMovie movie={movies.popular.data[0]} />
 
-          {popular.data.length > 1 && (
-            <MovieListSection title="Em alta" movieList={popular.data.slice(1)} />
+          {movies.popular.data.length > 1 && (
+            <MediaListSection title="FIlmes em alta" mediaList={movies.popular.data.slice(1)} />
           )}
         </>
       )}
 
-      {topRated.data && topRated.data.length > 0 && (
-        <MovieListSection title="Gosto do público" movieList={topRated.data} />
+      {series.airingToday.data && series.airingToday.data.length > 0 && (
+        <MediaListSection title="Atualização de séries" mediaList={series.airingToday.data} />
       )}
 
-      {upComing.data && upComing.data.length > 0 && (
-        <MovieListSection title="Em breve..." movieList={upComing.data} />
+      {series.onTheAir.data && series.onTheAir.data.length > 0 && (
+        <MediaListSection title="Séries em alta" mediaList={series.onTheAir.data} />
       )}
     </div>
   )

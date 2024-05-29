@@ -1,16 +1,18 @@
 import { Play } from "lucide-react"
 import { Link } from "react-router-dom"
 import { twMerge } from "tailwind-merge"
+import { MediaType } from "../interfaces/media-overview"
 
 interface PlayButtonProps {
-  movieId: number
+  mediaType: MediaType
+  mediaId: number
   className?: string
 }
 
-export default function PlayButton({ movieId, className }: PlayButtonProps) {
+export default function PlayButton({ mediaId, mediaType, className }: PlayButtonProps) {
   return (
     <Link
-      to={`/movie/${movieId}`}
+      to={`/${mediaType}/${mediaId}`}
       title="Assistir a este filme"
       className={twMerge(
         `bg-amber-500 text-amber-950

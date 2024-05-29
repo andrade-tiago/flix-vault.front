@@ -1,16 +1,16 @@
 import { Star } from "lucide-react";
 
 interface RatingProps {
-  rating: number
+  value: number
 }
 
-export default function Rating({ rating }: RatingProps) {
+export default function Rating({ value }: RatingProps) {
   return (
     <div title="Avaliação" className="flex items-baseline gap-1">
       <Star className="text-yellow-500 size-5 translate-y-0.5" />
       <div>
         <span className="text-lg">
-          {rating ? rating.toFixed(1) : '-'}
+          {value ? value.toFixed(1) : '-'}
         </span>
         <span>/10</span>
       </div>

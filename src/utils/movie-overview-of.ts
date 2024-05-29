@@ -1,5 +1,5 @@
-import IMDbMovieDetails from "../interfaces/imdb-api/imdb-movie-details";
-import MovieOverview from "../interfaces/movie-overview";
+import { IMDbMovieDetails } from "../interfaces/imdb-api/imdb-media-details";
+import { MediaType, MovieOverview } from "../interfaces/media-overview";
 import { imgBaseURL } from "../services/imdb-api/imdb-api";
 
 export default function movieOverviewOf(movie: IMDbMovieDetails): MovieOverview {
@@ -9,6 +9,8 @@ export default function movieOverviewOf(movie: IMDbMovieDetails): MovieOverview 
   }
 
   return {
+    mediaType: MediaType.Movie,
+
     id: movie.id,
     overview: movie.overview,
     posterPath: posterPath,

@@ -27,7 +27,7 @@ export default function useMovieOverviewList(
   }
 
   return useQuery({
-    queryKey: [listName, pageNumber],
+    queryKey: ['movies', listName, pageNumber],
     queryFn,
   })
 }

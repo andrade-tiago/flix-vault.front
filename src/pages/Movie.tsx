@@ -1,8 +1,8 @@
 import { useParams } from "react-router-dom"
 import GenreList from "../components/GenreList"
-import MovieData from "../components/movie/MovieData"
+import MovieData from "../components/MovieData"
 import useMovieDetails from "../hooks/use-movie-details"
-import MovieListSection from "../components/MovieListSection"
+import MediaListSection from "../components/MovieListSection"
 import BackButton from "../components/BackButton"
 import useMovieRecommendationsList from "../hooks/use-movie-recommendations-list"
 import useMovieImages from "../hooks/use-movie-images"
@@ -87,7 +87,7 @@ export default function Movie() {
       </div>
 
       {movieRecommendations && movieRecommendations.length > 0 && (
-        <MovieListSection title="Com base neste" movieList={movieRecommendations} />
+        <MediaListSection title="Com base neste" mediaList={movieRecommendations} />
       )}
     </div>
   )

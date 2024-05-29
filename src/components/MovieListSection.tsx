@@ -1,13 +1,13 @@
-import MovieOverview from "../interfaces/movie-overview"
+import { MovieOverview, SeriesOverview } from "../interfaces/media-overview"
 import Carousel from "./Carousel"
-import MovieCard from "./movie/MovieCard"
+import MediaCard from "./MediaCard"
 
-interface MovieListSectionProps {
+interface MediaListSectionProps {
   title: string
-  movieList: MovieOverview[]
+  mediaList: (MovieOverview | SeriesOverview)[]
 }
 
-export default function MovieListSection({ title, movieList }: MovieListSectionProps) {
+export default function MediaListSection({ title, mediaList }: MediaListSectionProps) {
   return (
     <section>
       <h3 className="px-3 sm:px-5 md:px-7 xl:px-9 font-medium text-2xl">
@@ -15,8 +15,8 @@ export default function MovieListSection({ title, movieList }: MovieListSectionP
       </h3>
 
       <Carousel>
-        {movieList.map((movie) => (
-          <MovieCard movie={movie} key={movie.id} />
+        {mediaList.map((media) => (
+          <MediaCard key={media.id} media={media} />
         ))}
       </Carousel>
     </section>

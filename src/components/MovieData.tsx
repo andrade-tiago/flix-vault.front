@@ -1,4 +1,4 @@
-import Rating from "../Rating";
+import Rating from "./Rating";
 
 interface MovieDataProps {
   year: number
@@ -19,7 +19,7 @@ export default function MovieData({ year, runtime, rating }: MovieDataProps) {
         )}
       </span>
 
-      <Rating rating={rating} />
+      <Rating value={rating} />
     </div>
   )
 }

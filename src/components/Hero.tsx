@@ -1,8 +1,8 @@
 import { ChevronDown } from "lucide-react"
-import MovieData from "./movie/MovieData"
-import PlayButton from "./movie/PlayButton"
-import MovieOverview from "../interfaces/movie-overview"
+import PlayButton from "./PlayButton"
+import { MovieOverview } from "../interfaces/media-overview"
 import useMovieImages from "../hooks/use-movie-images"
+import Rating from "./Rating"
 
 interface HeroProps {
   movie: MovieOverview
@@ -32,11 +32,11 @@ export default function Hero({ movie }: HeroProps) {
           ): movie.title}
         </h3>
 
-        <MovieData
-          runtime={movie.runtime}
-          year={movie.year}
-          rating={movie.rating}
-        />
+        <ul className="flex gap-5 items-baseline">
+          <li>{movie.year}</li>
+          <li>{movie.runtime} min</li>
+          <li><Rating value={movie.rating} /></li>
+        </ul>
 
         <h4 className="font-medium uppercase tracking-widest text-sm -mb-4">
           Sinopse
@@ -45,7 +45,7 @@ export default function Hero({ movie }: HeroProps) {
           {movie.overview}
         </p>
 
-        <PlayButton movieId={movie.id} className="shadow-amber-500" />
+        <PlayButton mediaType={movie.mediaType} mediaId={movie.id} className="shadow-amber-500" />
 
         <ChevronDown className="mt-5" />
       </div>

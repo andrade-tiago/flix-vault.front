@@ -1,6 +1,6 @@
-import useMovieImages from "../../hooks/use-movie-images";
-import MovieOverview from "../../interfaces/movie-overview";
-import MovieData from "./MovieData";
+import useMovieImages from "../hooks/use-movie-images";
+import { MovieOverview } from "../interfaces/media-overview";
+import Rating from "./Rating";
 import PlayButton from "./PlayButton";
 
 interface FeaturedMovieProps {
@@ -20,11 +20,11 @@ export default function FeaturedMovie({ movie }: FeaturedMovieProps) {
       )}
 
       <div className="max-w-xl flex gap-8 flex-col">
-        <MovieData
-          runtime={movie.runtime}
-          rating={movie.rating}
-          year={movie.year}
-        />
+        <ul className="flex gap-5 items-baseline">
+          <li>{movie.year}</li>
+          <li>{movie.runtime} min</li>
+          <li><Rating value={movie.rating} /></li>
+        </ul>
 
         <h3 className="text-4xl font-medium">
           {movie.title}
@@ -34,7 +34,7 @@ export default function FeaturedMovie({ movie }: FeaturedMovieProps) {
           {movie.overview}
         </p>
 
-        <PlayButton movieId={movie.id} />
+        <PlayButton mediaType={movie.mediaType} mediaId={movie.id} />
       </div>
     </section>
   ) 
