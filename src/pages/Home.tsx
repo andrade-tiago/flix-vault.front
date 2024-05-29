@@ -33,7 +33,7 @@ export default function Home() {
           <FeaturedMovie movie={movies.popular.data[0]} />
 
           {movies.popular.data.length > 1 && (
-            <MediaListSection title="FIlmes em alta" mediaList={movies.popular.data.slice(1)} />
+            <MediaListSection title="Filmes em alta" mediaList={movies.popular.data.slice(1)} />
           )}
         </>
       )}
