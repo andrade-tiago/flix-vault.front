@@ -1,6 +1,6 @@
 import { useQuery, useQueryClient } from "react-query";
 import getIMDbMovieDetails from "@/services/imdb-api/get-imdb-movie-details";
-import movieDetailsOf from "@/utils/movie-details-of";
+import MovieDetails from "@/models/movie-details";
 
 export default function useMovieDetails(
   movieId: number,
@@ -13,7 +13,7 @@ export default function useMovieDetails(
       queryFn: () => getIMDbMovieDetails(movieId),
     })
 
-    return movieDetailsOf(imdbMovieDetails)
+    return MovieDetails.fromIMDbMovieDetails(imdbMovieDetails)
   }
 
   return useQuery({

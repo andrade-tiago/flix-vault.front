@@ -1,6 +1,7 @@
-import { MovieOverview, SeriesOverview } from "@/interfaces/media-overview"
+import MovieOverview from "@/models/movie-overview"
 import Carousel from "./Carousel"
 import MediaCard from "./MediaCard"
+import SeriesOverview from "@/models/series-overview"
 
 interface MediaListSectionProps {
   title: string

@@ -1,7 +1,7 @@
 import { useQuery, useQueryClient } from "react-query";
 import getIMDbTVSeriesList, { IMDbTVSeriesListEndpoint } from "@/services/imdb-api/get-imdb-tv-list";
 import getIMDbTVSeriesDetails from "@/services/imdb-api/get-imdb-tv-series-details";
-import seriesOverviewOf from "@/utils/series-overview-of";
+import SeriesOverview from "@/models/series-overview";
 
 export default function useSeriesOverviewList(
   listName: IMDbTVSeriesListEndpoint,
@@ -19,7 +19,7 @@ export default function useSeriesOverviewList(
           queryFn: () => getIMDbTVSeriesDetails(series.id),
         })
 
-        return seriesOverviewOf(imdbSeriesDetails)
+        return SeriesOverview.fromIMDbSeriesDetails(imdbSeriesDetails)
       }
     )
 

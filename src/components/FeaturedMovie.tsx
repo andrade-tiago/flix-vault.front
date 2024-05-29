@@ -1,7 +1,7 @@
 import useMovieImages from "@/hooks/use-movie-images";
-import { MovieOverview } from "@/interfaces/media-overview";
 import Rating from "./Rating";
 import PlayButton from "./PlayButton";
+import MovieOverview from "@/models/movie-overview";
 
 interface FeaturedMovieProps {
   movie: MovieOverview

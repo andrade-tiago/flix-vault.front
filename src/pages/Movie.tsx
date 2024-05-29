@@ -25,7 +25,7 @@ export default function Movie() {
 
   const productionCompanies = 
     movie.productionCompanies.length > 0
-    ? movie.productionCompanies.map(comp => comp.name).join(', ').concat('.')
+    ? movie.productionCompanies.join(', ').concat('.')
     : '(indisponível)'
 
   return (

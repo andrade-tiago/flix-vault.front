@@ -1,7 +1,7 @@
 import { useQuery, useQueryClient } from "react-query";
 import getIMDbMovieList, { IMDbMovieListEndpoint } from "@/services/imdb-api/get-imdb-movie-list";
 import getIMDbMovieDetails from "@/services/imdb-api/get-imdb-movie-details";
-import movieOverviewOf from "@/utils/movie-overview-of";
+import MovieOverview from "@/models/movie-overview";
 
 export default function useMovieOverviewList(
   listName: IMDbMovieListEndpoint,
@@ -19,7 +19,7 @@ export default function useMovieOverviewList(
           queryFn: () => getIMDbMovieDetails(movie.id),
         })
 
-        return movieOverviewOf(imdbMovieDetails)
+        return MovieOverview.fromIMDbMovieDetails(imdbMovieDetails)
       }
     )
 
