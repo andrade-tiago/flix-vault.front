@@ -1,6 +1,6 @@
 import { useQuery } from "react-query";
-import getIMDbMovieImages from "../services/imdb-api/get-imdb-movie-images";
-import { imgBaseURL } from "../services/imdb-api/imdb-api";
+import getIMDbMovieImages from "@/services/imdb-api/get-imdb-movie-images";
+import { imgBaseURL } from "@/services/imdb-api/imdb-api";
 
 export default function useMovieImages(
   movieId: number,

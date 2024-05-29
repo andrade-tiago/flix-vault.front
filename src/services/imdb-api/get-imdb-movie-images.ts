@@ -1,4 +1,4 @@
-import IMDbMovieImages from "../../interfaces/imdb-api/imdb-movie-images";
+import IMDbMovieImages from "@/interfaces/imdb-api/imdb-movie-images";
 import { movieAPI } from "./imdb-api";
 
 export default async function getIMDbMovieImages(

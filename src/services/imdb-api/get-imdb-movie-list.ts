@@ -1,4 +1,4 @@
-import IMDbPaginatedList, { IMDbMovie } from "../../interfaces/imdb-api/imdb-paginated-list";
+import IMDbPaginatedList, { IMDbMovie } from "@/interfaces/imdb-api/imdb-paginated-list";
 import { movieAPI } from "./imdb-api";
 
 export enum IMDbMovieListEndpoint {

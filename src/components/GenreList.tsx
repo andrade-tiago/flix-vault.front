@@ -1,4 +1,4 @@
-import IMDbGenre from "../interfaces/imdb-api/imdb-genre"
+import IMDbGenre from "@/interfaces/imdb-api/imdb-genre"
 
 interface GenreListProps {
   genres: IMDbGenre[]

@@ -1,7 +1,7 @@
 import { useQuery, useQueryClient } from "react-query";
-import getIMDbTVSeriesList, { IMDbTVSeriesListEndpoint } from "../services/imdb-api/get-imdb-tv-list";
-import getIMDbTVSeriesDetails from "../services/imdb-api/get-imdb-tv-series-details";
-import seriesOverviewOf from "../utils/series-overview-of";
+import getIMDbTVSeriesList, { IMDbTVSeriesListEndpoint } from "@/services/imdb-api/get-imdb-tv-list";
+import getIMDbTVSeriesDetails from "@/services/imdb-api/get-imdb-tv-series-details";
+import seriesOverviewOf from "@/utils/series-overview-of";
 
 export default function useSeriesOverviewList(
   listName: IMDbTVSeriesListEndpoint,

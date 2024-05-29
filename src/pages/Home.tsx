@@ -1,10 +1,10 @@
-import Hero from "../components/Hero";
-import MediaListSection from "../components/MovieListSection";
-import FeaturedMovie from "../components/FeaturedMovie";
-import useMovieOverviewList from "../hooks/use-movie-overview-list";
-import { IMDbMovieListEndpoint } from "../services/imdb-api/get-imdb-movie-list";
-import { IMDbTVSeriesListEndpoint } from "../services/imdb-api/get-imdb-tv-list";
-import useSeriesOverviewList from "../hooks/use-series-overview-list";
+import Hero from "@/components/Hero";
+import MediaListSection from "@/components/MovieListSection";
+import FeaturedMovie from "@/components/FeaturedMovie";
+import useMovieOverviewList from "@/hooks/use-movie-overview-list";
+import { IMDbMovieListEndpoint } from "@/services/imdb-api/get-imdb-movie-list";
+import { IMDbTVSeriesListEndpoint } from "@/services/imdb-api/get-imdb-tv-list";
+import useSeriesOverviewList from "@/hooks/use-series-overview-list";
 
 export default function Home() {
   const movies = {

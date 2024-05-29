@@ -1,6 +1,6 @@
-import { IMDbTVSeriesDetails } from "../interfaces/imdb-api/imdb-media-details";
-import { MediaType, SeriesOverview } from "../interfaces/media-overview";
-import { imgBaseURL } from "../services/imdb-api/imdb-api";
+import { IMDbTVSeriesDetails } from "@/interfaces/imdb-api/imdb-media-details";
+import { MediaType, SeriesOverview } from "@/interfaces/media-overview";
+import { imgBaseURL } from "@/services/imdb-api/imdb-api";
 
 export default async function seriesOverviewOf(series: IMDbTVSeriesDetails): Promise<SeriesOverview> {
   let posterPath = series.poster_path

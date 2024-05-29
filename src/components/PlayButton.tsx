@@ -1,7 +1,7 @@
 import { Play } from "lucide-react"
 import { Link } from "react-router-dom"
 import { twMerge } from "tailwind-merge"
-import { MediaType } from "../interfaces/media-overview"
+import { MediaType } from "@/interfaces/media-overview"
 
 interface PlayButtonProps {
   mediaType: MediaType

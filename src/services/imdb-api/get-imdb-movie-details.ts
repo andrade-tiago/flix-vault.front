@@ -1,4 +1,4 @@
-import { IMDbMovieDetails } from "../../interfaces/imdb-api/imdb-media-details";
+import { IMDbMovieDetails } from "@/interfaces/imdb-api/imdb-media-details";
 import { movieAPI } from "./imdb-api";
 
 export default async function getIMDbMovieDetails(

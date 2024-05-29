@@ -1,7 +1,7 @@
 import { useQuery, useQueryClient } from "react-query";
-import getIMDbRecommendationsBasedOnMovie from "../services/imdb-api/get-imdb-movie-recommendations";
-import getIMDbMovieDetails from "../services/imdb-api/get-imdb-movie-details";
-import movieOverviewOf from "../utils/movie-overview-of";
+import getIMDbRecommendationsBasedOnMovie from "@/services/imdb-api/get-imdb-movie-recommendations";
+import getIMDbMovieDetails from "@/services/imdb-api/get-imdb-movie-details";
+import movieOverviewOf from "@/utils/movie-overview-of";
 
 export default function useMovieRecommendationsList(
   movieId: number,

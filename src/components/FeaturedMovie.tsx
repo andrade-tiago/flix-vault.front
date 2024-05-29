@@ -1,5 +1,5 @@
-import useMovieImages from "../hooks/use-movie-images";
-import { MovieOverview } from "../interfaces/media-overview";
+import useMovieImages from "@/hooks/use-movie-images";
+import { MovieOverview } from "@/interfaces/media-overview";
 import Rating from "./Rating";
 import PlayButton from "./PlayButton";
 

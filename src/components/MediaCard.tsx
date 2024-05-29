@@ -1,6 +1,6 @@
 import { twMerge } from "tailwind-merge"
 import PlayButton from "./PlayButton"
-import truncateText from "../utils/truncate-text"
+import truncateText from "@/utils/truncate-text"
 import Rating from "./Rating"
 import { MediaType, MovieOverview, SeriesOverview } from "../interfaces/media-overview"
 

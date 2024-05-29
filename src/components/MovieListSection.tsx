@@ -1,4 +1,4 @@
-import { MovieOverview, SeriesOverview } from "../interfaces/media-overview"
+import { MovieOverview, SeriesOverview } from "@/interfaces/media-overview"
 import Carousel from "./Carousel"
 import MediaCard from "./MediaCard"
 

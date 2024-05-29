@@ -1,4 +1,4 @@
-import { IMDbTVSeriesDetails } from "../../interfaces/imdb-api/imdb-media-details";
+import { IMDbTVSeriesDetails } from "@/interfaces/imdb-api/imdb-media-details";
 import { movieAPI } from "./imdb-api";
 
 export default async function getIMDbTVSeriesDetails(

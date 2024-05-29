@@ -1,7 +1,7 @@
 import { ChevronDown } from "lucide-react"
 import PlayButton from "./PlayButton"
-import { MovieOverview } from "../interfaces/media-overview"
-import useMovieImages from "../hooks/use-movie-images"
+import { MovieOverview } from "@/interfaces/media-overview"
+import useMovieImages from "@/hooks/use-movie-images"
 import Rating from "./Rating"
 
 interface HeroProps {

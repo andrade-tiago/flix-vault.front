@@ -1,5 +1,5 @@
-import { IMDbMovieDetails } from "../interfaces/imdb-api/imdb-media-details";
-import MovieDetails from "../interfaces/movie-details";
+import { IMDbMovieDetails } from "@/interfaces/imdb-api/imdb-media-details";
+import MovieDetails from "@/interfaces/movie-details";
 
 export default function movieDetailsOf(
   movie: IMDbMovieDetails,
