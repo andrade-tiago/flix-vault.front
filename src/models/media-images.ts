@@ -7,9 +7,9 @@ import IMDBbImage, {
 
 export default class MediaImagesURLs {
   private constructor(
-    readonly title: string | null,
-    readonly poster: string | null,
     readonly backdrop: string | null,
+    readonly poster: string | null,
+    readonly title: string | null,
   ) {}
 
   static fromIMDbMediaImages(images: IMDbMediaImages) {
@@ -24,9 +24,9 @@ export default class MediaImagesURLs {
       || images.posters[0].file_path
 
     return new MediaImagesURLs(
-      IMDBbImage.title(TitleSizes.W500, titleImgPath),
       IMDBbImage.backdrop(BackdropSizes.Original, backdropImgPath),
       IMDBbImage.poster(PosterSizes.W342, posterImgPath),
+      IMDBbImage.title(TitleSizes.W500, titleImgPath),
     )
   }
 }
