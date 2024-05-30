@@ -1,6 +1,6 @@
 import { IMDbMovieDetails } from "@/interfaces/imdb-api/imdb-media-details";
 import MediaOverview, { MediaType } from "./media-overview";
-import { imgBaseURL } from "@/services/imdb-api/imdb-api";
+import IMDBbImage, { PosterSizes } from "@/services/imdb-api/imdb-images";
 
 export default class MovieOverview extends MediaOverview {
   readonly mediaType = MediaType.Movie
@@ -8,26 +8,21 @@ export default class MovieOverview extends MediaOverview {
   constructor(
     id: number,
     overview: string,
-    posterPath: string,
+    posterURL: string | null,
     rating: number,
     title: string,
 
     readonly runtime: number,
     readonly year: number,
   ) {
-    super(id, overview, posterPath, rating, title)
+    super(id, overview, posterURL, rating, title)
   }
 
   static fromIMDbMovieDetails(movie: IMDbMovieDetails) {
-    let posterPath = movie.poster_path
-    if (posterPath) {
-      posterPath = imgBaseURL + 'w185' + posterPath
-    }
-
     return new MovieOverview(
       movie.id,
       movie.overview,
-      posterPath,
+      IMDBbImage.poster(PosterSizes.W185, movie.poster_path),
       movie.vote_average,
       movie.title,
       movie.runtime,

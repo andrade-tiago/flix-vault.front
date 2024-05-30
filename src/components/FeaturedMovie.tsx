@@ -8,13 +8,13 @@ interface FeaturedMovieProps {
 }
 
 export default function FeaturedMovie({ movie }: FeaturedMovieProps) {
-  const movieImages = useMovieImages(movie.id)
+  const { data: movieImages } = useMovieImages(movie.id)
 
   return (
     <section className="relative py-20 flex px-5 sm:px-10 md:px-20 lg:px-28 bg-gradient-to-r from-gray-950 to-gray-950/40">
-      {movieImages.data?.backdropImgPath && (
+      {movieImages?.backdrop && (
         <img
-          src={movieImages.data.backdropImgPath} alt=""
+          src={movieImages.backdrop} alt=""
           className="absolute w-full h-full object-cover -z-10 top-0 left-0 opacity-50"
         />
       )}

@@ -9,7 +9,7 @@ export default abstract class MediaOverview {
   constructor(
     readonly id: number,
     readonly overview: string,
-    readonly posterPath: string,
+    readonly posterURL: string | null,
     readonly rating: number,
     readonly title: string,
   ) {}

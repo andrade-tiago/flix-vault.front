@@ -1,6 +1,6 @@
 import { IMDbTVSeriesDetails } from "@/interfaces/imdb-api/imdb-media-details";
 import MediaOverview, { MediaType } from "./media-overview";
-import { imgBaseURL } from "@/services/imdb-api/imdb-api";
+import IMDBbImage, { PosterSizes } from "@/services/imdb-api/imdb-images";
 
 export default class SeriesOverview extends MediaOverview {
   readonly mediaType = MediaType.Series
@@ -8,7 +8,7 @@ export default class SeriesOverview extends MediaOverview {
   constructor(
     id: number,
     overview: string,
-    posterPath: string,
+    posterPath: string | null,
     rating: number,
     title: string,
 
@@ -19,15 +19,10 @@ export default class SeriesOverview extends MediaOverview {
   }
 
   static fromIMDbSeriesDetails(series: IMDbTVSeriesDetails) {
-    let posterPath = series.poster_path
-    if (posterPath) {
-      posterPath = imgBaseURL + 'w185' + posterPath
-    }
-
     return new SeriesOverview(
       series.id,
       series.overview,
-      posterPath,
+      IMDBbImage.poster(PosterSizes.W185, series.poster_path),
       series.vote_average,
       series.name,
       series.number_of_episodes,

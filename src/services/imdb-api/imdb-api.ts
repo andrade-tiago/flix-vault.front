@@ -6,5 +6,3 @@ export const movieAPI = axios.create({
     Authorization: `Bearer ${import.meta.env.VITE_MOVIE_API_TOKEN}`,
   },
 })
-
-export const imgBaseURL = 'https://image.tmdb.org/t/p/'

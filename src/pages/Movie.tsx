@@ -31,9 +31,9 @@ export default function Movie() {
   return (
     <div>
       <div className="relative bg-gradient-to-t from-gray-950 pt-40 pb-16 min-h-screen px-3 md:px-6">
-        {movieImages?.backdropImgPath && (
+        {movieImages?.backdrop && (
           <img
-            src={movieImages.backdropImgPath} alt=""
+            src={movieImages.backdrop} alt=""
             className="absolute w-full h-full object-cover -z-10 top-0 left-0 opacity-30"
           />
         )}
@@ -43,9 +43,9 @@ export default function Movie() {
 
           <div className="flex flex-col md:flex-row gap-10 items-center md:items-start">
             <div className="flex flex-col items-center md:order-2 w-full max-w-sm">
-              {movieImages?.posterImgPath && (
+              {movieImages?.poster && (
                 <img
-                  src={movieImages.posterImgPath}
+                  src={movieImages.poster}
                   alt=""
                   className="min-w-60 max-w-60 rounded-lg shadow-lg shadow-gray-800 border border-gray-400/20"
                 />

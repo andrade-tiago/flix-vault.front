@@ -16,9 +16,9 @@ export default function MediaCard({ media }: CardProps) {
       transition-transform duration-200 flex flex-col gap-1 text-gray-400"
     >
       <div className="h-64 rounded-xl overflow-hidden relative">
-        {media.posterPath && (
+        {media.posterURL && (
           <img
-            src={media.posterPath} alt=""
+            src={media.posterURL} alt=""
             className="absolute w-full h-full object-cover -z-10 top-0 left-0"
           />
         )}

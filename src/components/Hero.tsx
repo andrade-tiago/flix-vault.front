@@ -9,22 +9,22 @@ interface HeroProps {
 }
 
 export default function Hero({ movie }: HeroProps) {
-  const movieImages = useMovieImages(movie.id)
+  const { data: movieImages } = useMovieImages(movie.id)
 
   return (
     <div className="relative pt-40 pb-20 bg-gradient-to-t from-gray-950 px-4">
-      {movieImages.data?.backdropImgPath && (
+      {movieImages?.backdrop && (
         <img
-          src={movieImages.data.backdropImgPath} alt=""
+          src={movieImages.backdrop} alt=""
           className="absolute w-full h-full object-cover -z-10 top-0 left-0 opacity-50"
         />
       )}
 
       <div className="max-w-2xl mx-auto flex items-center gap-5 flex-col">
         <h3 className="font-medium text-5xl text-center">
-          {movieImages.data?.titleImgPath ? (
+          {movieImages?.title ? (
             <img
-              src={movieImages.data.titleImgPath}
+              src={movieImages.title}
               alt={movie.title}
               title={movie.title}
               className="max-w-full"
