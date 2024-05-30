@@ -11,7 +11,11 @@ export default function FeaturedMovie({ movie }: FeaturedMovieProps) {
   const { data: movieImages } = useMovieImages(movie.id)
 
   return (
-    <section className="relative py-20 flex px-5 sm:px-10 md:px-20 lg:px-28 bg-gradient-to-r from-gray-950 to-gray-950/40">
+    <section
+      className="relative py-20 flex px-5 sm:px-10
+      md:px-20 lg:px-28 bg-gradient-to-r from-gray-950
+      to-gray-950/40 items-center min-h-[500px]"
+    >
       {movieImages?.backdrop && (
         <img
           src={movieImages.backdrop} alt=""
