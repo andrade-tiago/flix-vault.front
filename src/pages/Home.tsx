@@ -13,7 +13,6 @@ export default function Home() {
   }
   const series = {
     airingToday: useSeriesOverviewList(IMDbTVSeriesListEndpoint.AiringToday),
-    onTheAir: useSeriesOverviewList(IMDbTVSeriesListEndpoint.OnTheAir),
   }
 
   return (
@@ -23,27 +22,19 @@ export default function Home() {
           <Hero movie={movies.inTheaters.data[0]} />
 
           {movies.inTheaters.data.length > 1 && (
-            <MediaListSection title="Nos cinemas" mediaList={movies.inTheaters.data.slice(1)} />
+            <MediaListSection title="Nos cinemas" mediaList={movies.inTheaters.data.slice(2)} />
           )}
+
+          <FeaturedMovie movie={movies.inTheaters.data[1]} />
         </>
       )}
 
       {movies.popular.data && movies.popular.data.length > 0 && (
-        <>
-          <FeaturedMovie movie={movies.popular.data[0]} />
-
-          {movies.popular.data.length > 1 && (
-            <MediaListSection title="Filmes em alta" mediaList={movies.popular.data.slice(1)} />
-          )}
-        </>
+        <MediaListSection title="Filmes em alta" mediaList={movies.popular.data} />
       )}
 
       {series.airingToday.data && series.airingToday.data.length > 0 && (
-        <MediaListSection title="Atualização de séries" mediaList={series.airingToday.data} />
-      )}
-
-      {series.onTheAir.data && series.onTheAir.data.length > 0 && (
-        <MediaListSection title="Séries em alta" mediaList={series.onTheAir.data} />
+        <MediaListSection title="Séries" mediaList={series.airingToday.data} />
       )}
     </div>
   )
