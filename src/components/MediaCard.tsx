@@ -2,11 +2,13 @@ import { twMerge } from "tailwind-merge"
 import PlayButton from "./PlayButton"
 import truncateText from "@/utils/truncate-text"
 import Rating from "./Rating"
+import MediaOverview from "@/models/media-overview"
 import SeriesOverview from "@/models/series-overview"
 import MovieOverview from "@/models/movie-overview"
+import { MediaData } from "./MediaData"
 
 interface CardProps {
-  media: SeriesOverview | MovieOverview
+  media: MediaOverview
 }
 
 export default function MediaCard({ media }: CardProps) {
@@ -40,22 +42,21 @@ export default function MediaCard({ media }: CardProps) {
         {truncateText(media.title, 20)}
       </h3>
 
-      <ul className="flex justify-between gap-2">
+      <MediaData.Root className="w-full text-sm">
         {media instanceof MovieOverview && (
           <>
-            <li>{media.year}</li>
-            <li>{media.runtime} min</li>
+            <MediaData.Item>{media.year}</MediaData.Item>
+            <MediaData.Item>{media.runtime} min</MediaData.Item>
           </>
         )}
         {media instanceof SeriesOverview && (
           <>
-            <li title="Temporadas">{media.seasons} Ts</li>
-            <li title="Episódios">{media.episodes} Eps</li>
+            <MediaData.Item>{media.episodes} Eps.</MediaData.Item>
           </>
         )}
 
-        <li><Rating value={media.rating} /></li>
-      </ul>
+        <MediaData.Item><Rating value={media.rating} /></MediaData.Item>
+      </MediaData.Root>
     </div>
   )
 }

@@ -1,11 +1,12 @@
 import { useParams } from "react-router-dom"
 import GenreList from "@/components/GenreList"
-import MovieData from "@/components/MovieData"
 import useMovieDetails from "@/hooks/use-movie-details"
 import MediaListSection from "@/components/MovieListSection"
 import BackButton from "@/components/BackButton"
 import useMovieRecommendationsList from "@/hooks/use-movie-recommendations-list"
 import useMovieImages from "@/hooks/use-movie-images"
+import Rating from "@/components/Rating"
+import { MediaData } from "@/components/MediaData"
 
 type RouteParams = {
   id: string
@@ -47,17 +48,17 @@ export default function Movie() {
                 <img
                   src={movieImages.poster}
                   alt=""
-                  className="min-w-60 max-w-60 rounded-lg shadow-lg shadow-gray-800 border border-gray-400/20"
+                  className="min-w-60 max-w-60 rounded-lg shadow-lg"
                 />
               )}
             </div>
 
             <div className="flex flex-col gap-5 max-w-2xl w-full">
-              <MovieData
-                runtime={movie.runtime}
-                rating={movie.rating}
-                year={movie.year}
-              />
+              <MediaData.Root>
+                <MediaData.Item>{movie.year}</MediaData.Item>
+                <MediaData.Item>{movie.runtime} min</MediaData.Item>
+                <MediaData.Item><Rating value={movie.rating} /></MediaData.Item>
+              </MediaData.Root>
 
               <p className="uppercase tracking-widest font-medium -mb-4 text-sm">
                 Assistir a

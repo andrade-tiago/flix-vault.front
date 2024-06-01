@@ -3,6 +3,7 @@ import PlayButton from "./PlayButton"
 import useMovieImages from "@/hooks/use-movie-images"
 import Rating from "./Rating"
 import MovieOverview from "@/models/movie-overview"
+import { MediaData } from "./MediaData"
 
 interface HeroProps {
   movie: MovieOverview
@@ -32,11 +33,11 @@ export default function Hero({ movie }: HeroProps) {
           ): movie.title}
         </h3>
 
-        <ul className="flex gap-5 items-baseline">
-          <li>{movie.year}</li>
-          <li>{movie.runtime} min</li>
-          <li><Rating value={movie.rating} /></li>
-        </ul>
+        <MediaData.Root>
+          <MediaData.Item>{movie.year}</MediaData.Item>
+          <MediaData.Item>{movie.runtime} min</MediaData.Item>
+          <MediaData.Item><Rating value={movie.rating} /></MediaData.Item>
+        </MediaData.Root>
 
         <h4 className="font-medium uppercase tracking-widest text-sm -mb-4">
           Sinopse
