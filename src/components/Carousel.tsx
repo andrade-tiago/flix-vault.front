@@ -10,11 +10,21 @@ export default function Carousel({ children }: CarouselProps) {
   const [width, setWidth] = useState(0)
 
   useEffect(() => {
-    setWidth(carousel.current!.scrollWidth - carousel.current!.offsetWidth)
-  }, [
-    carousel.current?.scrollWidth,
-    carousel.current?.offsetWidth,
-  ])
+    function handleCarouselWidthChange() {
+      const newWidth = carousel.current!.scrollWidth - carousel.current!.offsetWidth
+      
+      if (Number.isFinite(newWidth)) { // is a valid number?
+        setWidth(newWidth)
+      }
+    }
+
+    handleCarouselWidthChange()
+    window.addEventListener('resize', handleCarouselWidthChange)
+
+    return () => {
+      window.removeEventListener('resize', handleCarouselWidthChange)
+    }
+  }, [])
 
   return (
     <div
