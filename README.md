@@ -4,7 +4,6 @@ Este é o front-end do Flix Vault, uma aplicação de catálogo de filmes onde v
 
 <img
   src="./public/screenshot.png"
-  style="max-width: 600px"
   alt=""
   title="Tela de detalhes do filme"
 />
