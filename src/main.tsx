@@ -3,8 +3,8 @@ import ReactDOM from 'react-dom/client'
 import App from './App.tsx'
 import './index.css'
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
-import Home from './pages/Home.tsx'
-import Movie from './pages/Movie.tsx'
+import HomePage from './pages/Home.tsx'
+import MoviePage from './pages/Movie.tsx'
 import { QueryClientProvider } from 'react-query'
 import { queryClient } from './services/imdb-api/query-client.ts'
 
@@ -13,8 +13,8 @@ const router = createBrowserRouter([
     path: '/',
     element: <App />,
     children: [
-      { path: '/', element: <Home /> },
-      { path: '/movie/:id', element: <Movie /> }
+      { path: '/', element: <HomePage /> },
+      { path: '/movie/:id', element: <MoviePage /> }
     ],
   },
 ])

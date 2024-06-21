@@ -12,7 +12,7 @@ type RouteParams = {
   id: string
 }
 
-export default function Movie() {
+export default function MoviePage() {
   const params = useParams<RouteParams>()
   const id = Number(params.id)
 
@@ -42,7 +42,7 @@ export default function Movie() {
         <div className="flex flex-col gap-10 mx-auto max-w-2xl sm:max-w-6xl">
           <BackButton />
 
-          <div className="flex flex-col md:flex-row gap-10 items-center md:items-start">
+          <div className="flex flex-col md:flex-row gap-10 items-center md:items-start justify-between">
             <div className="flex flex-col items-center md:order-2 w-full max-w-sm">
               {movieImages?.poster && (
                 <img

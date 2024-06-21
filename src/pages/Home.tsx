@@ -6,7 +6,7 @@ import { IMDbMovieListEndpoint } from "@/services/imdb-api/get-imdb-movie-list";
 import { IMDbTVSeriesListEndpoint } from "@/services/imdb-api/get-imdb-tv-list";
 import useSeriesOverviewList from "@/hooks/use-series-overview-list";
 
-export default function Home() {
+export default function HomePage() {
   const movies = {
     inTheaters: useMovieOverviewList(IMDbMovieListEndpoint.InTheaters),
     popular: useMovieOverviewList(IMDbMovieListEndpoint.Popular),
