@@ -21,6 +21,7 @@ export default class MediaImagesURLs {
 
     const posterImgPath: string | null | undefined =
       images.posters.find(poster => poster.iso_639_1 === 'pt-BR')?.file_path
+      || images.posters.find(poster => poster.iso_639_1 === 'en')?.file_path
       || images.posters[0].file_path
 
     return new MediaImagesURLs(
