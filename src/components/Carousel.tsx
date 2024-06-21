@@ -32,7 +32,7 @@ export default function Carousel({ children }: CarouselProps) {
       className="cursor-grab overflow-hidden active:cursor-grabbing w-auto relative"
     >
       <motion.div
-        className="inline-flex w-auto gap-8 py-4 px-3 sm:px-5 md:px-7 xl:px-9"
+        className="inline-flex w-auto gap-10 py-4 px-3 sm:px-5 md:px-7 xl:px-9"
         drag="x"
         dragConstraints={{ right: 0, left: - width }}
         children={children}

@@ -26,7 +26,7 @@ export default function MediaCard({ media }: CardProps) {
         )}
 
         <div
-          className="w-full h-full p-3 bg-gray-950/70 backdrop-blur-sm
+          className="w-full h-full p-3 bg-gray-950/70 backdrop-blur-xl
           opacity-0 hover:opacity-100 transition-opacity focus-within:opacity-100
           flex flex-col justify-between items-center"
         >
