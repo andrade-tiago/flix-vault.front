@@ -15,6 +15,7 @@ export default class MediaImagesURLs {
   static fromIMDbMediaImages(images: IMDbMediaImages) {
     const titleImgPath: string | null | undefined =
       images.logos.find(logo => logo.iso_639_1 === 'pt-BR')?.file_path
+      || images.logos.find(logo => logo.iso_639_1 === 'en')?.file_path
 
     const backdropImgPath: string | null | undefined =
       images.backdrops.find(backdrop => backdrop.iso_639_1 === null)?.file_path
