@@ -14,7 +14,7 @@ interface CardProps {
 export default function MediaCard({ media }: CardProps) {
   return (
     <div
-      className="w-44 hover:-translate-y-1 focus-within:-translate-y-1
+      className="group w-44 hover:-translate-y-1 focus-within:-translate-y-1
       transition-transform duration-200 flex flex-col gap-1 text-gray-400"
     >
       <div className="h-64 rounded-xl overflow-hidden relative">
@@ -27,7 +27,7 @@ export default function MediaCard({ media }: CardProps) {
 
         <div
           className="w-full h-full p-3 bg-gray-950/70 backdrop-blur-xl
-          opacity-0 hover:opacity-100 transition-opacity focus-within:opacity-100
+          opacity-0 group-hover:opacity-100 transition-opacity focus-within:opacity-100
           flex flex-col justify-between items-center"
         >
           <p className={twMerge('w-full', media.overview ? 'text-gray-100' : 'text-gray-400')}>
