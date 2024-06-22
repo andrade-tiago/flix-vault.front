@@ -13,7 +13,7 @@ Este é o front-end do Flix Vault, uma aplicação de catálogo de filmes onde v
  - [x] Filmes
  - [x] Séries (implementado parcialmente)
  - [x] Detalhes do filme
- - [ ] Detalhes da série
+ - [x] Detalhes da série (implementado parcialmente)
  - [ ] Busca de filmes
  - [ ] Busca de séries
 
