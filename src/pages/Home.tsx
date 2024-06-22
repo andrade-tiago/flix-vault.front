@@ -5,6 +5,7 @@ import useMovieOverviewList from "@/hooks/use-movie-overview-list";
 import { IMDbMovieListEndpoint } from "@/services/imdb-api/get-imdb-movie-list";
 import { IMDbTVSeriesListEndpoint } from "@/services/imdb-api/get-imdb-tv-list";
 import useSeriesOverviewList from "@/hooks/use-series-overview-list";
+import { useEffect } from "react";
 
 export default function HomePage() {
   const movies = {
@@ -14,6 +15,10 @@ export default function HomePage() {
   const series = {
     airingToday: useSeriesOverviewList(IMDbTVSeriesListEndpoint.AiringToday),
   }
+
+  useEffect(() => {
+    document.title = 'FlixVault: seus filmes e séries favoritos'
+  }, [])
 
   return (
     <div className="flex flex-col gap-6">

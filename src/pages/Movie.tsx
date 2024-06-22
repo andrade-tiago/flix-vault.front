@@ -8,6 +8,7 @@ import useMediaImages from "@/hooks/use-media-images"
 import Rating from "@/components/Rating"
 import { MediaData } from "@/components/MediaData"
 import { MediaType } from "@/enums/media-type"
+import { useEffect } from "react"
 
 type RouteParams = {
   id: string
@@ -20,6 +21,10 @@ export default function MoviePage() {
   const { data: movie } = useMovieDetails(movieID)
   const { data: movieImages } = useMediaImages(MediaType.Movie, movieID)
   const { data: movieRecommendations } = useMovieRecommendationsList(movieID)
+
+  useEffect(() => {
+    document.title = `FlixVault: assistir a "${movie?.title}"`
+  }, [movie])
 
   if (!movie) {
     return "Carregando..."

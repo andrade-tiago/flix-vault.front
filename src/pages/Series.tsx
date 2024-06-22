@@ -8,6 +8,7 @@ import { MediaType } from "@/enums/media-type"
 import useSeriesDetails from "@/hooks/use-series-details"
 import useSeriesRecommendationsList from "@/hooks/use-series-recommendations-list"
 import MediaListSection from "@/components/MediaListSection"
+import { useEffect } from "react"
 
 type RouteParams = {
   id: string
@@ -20,6 +21,10 @@ export default function SeriesPage() {
   const { data: series } = useSeriesDetails(seriesID)
   const { data: seriesImages } = useMediaImages(MediaType.Series, seriesID)
   const { data: seriesRecommendations } = useSeriesRecommendationsList(seriesID)
+
+  useEffect(() => {
+    document.title = `FlixVault: assistir a "${series?.title}"`
+  }, [series])
 
   if (!series) {
     return "Carregando..."
