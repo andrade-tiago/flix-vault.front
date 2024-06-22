@@ -1,4 +1,4 @@
-import IMDbMediaImages from "@/interfaces/imdb-api/imdb-movie-images";
+import IMDbMediaImages from "@/interfaces/imdb-api/imdb-media-images";
 import IMDBbImage, {
   BackdropSizes,
   PosterSizes,

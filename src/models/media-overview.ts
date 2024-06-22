@@ -1,7 +1,4 @@
-export enum MediaType {
-  Movie = 'movie',
-  Series = 'series',
-}
+import { MediaType } from "@/enums/media-type";
 
 export default abstract class MediaOverview {
   abstract readonly mediaType: MediaType

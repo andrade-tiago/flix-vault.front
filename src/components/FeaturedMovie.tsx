@@ -1,4 +1,4 @@
-import useMovieImages from "@/hooks/use-movie-images";
+import useMediaImages from "@/hooks/use-media-images";
 import Rating from "./Rating";
 import PlayButton from "./PlayButton";
 import MovieOverview from "@/models/movie-overview";
@@ -9,7 +9,7 @@ interface FeaturedMovieProps {
 }
 
 export default function FeaturedMovie({ movie }: FeaturedMovieProps) {
-  const { data: movieImages } = useMovieImages(movie.id)
+  const { data: movieImages } = useMediaImages(movie.mediaType, movie.id)
 
   return (
     <section

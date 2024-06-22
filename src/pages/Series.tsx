@@ -1,41 +1,41 @@
 import { useParams } from "react-router-dom"
 import GenreList from "@/components/GenreList"
-import useMovieDetails from "@/hooks/use-movie-details"
-import MediaListSection from "@/components/MediaListSection"
 import BackButton from "@/components/BackButton"
-import useMovieRecommendationsList from "@/hooks/use-movie-recommendations-list"
 import useMediaImages from "@/hooks/use-media-images"
 import Rating from "@/components/Rating"
 import { MediaData } from "@/components/MediaData"
 import { MediaType } from "@/enums/media-type"
+import useSeriesDetails from "@/hooks/use-series-details"
+import useSeriesRecommendationsList from "@/hooks/use-series-recommendations-list"
+import MediaListSection from "@/components/MediaListSection"
 
 type RouteParams = {
   id: string
 }
 
-export default function MoviePage() {
+export default function SeriesPage() {
   const params = useParams<RouteParams>()
-  const movieID = Number(params.id)
+  const seriesID = Number(params.id)
 
-  const { data: movie } = useMovieDetails(movieID)
-  const { data: movieImages } = useMediaImages(MediaType.Movie, movieID)
-  const { data: movieRecommendations } = useMovieRecommendationsList(movieID)
+  const { data: series } = useSeriesDetails(seriesID)
+  const { data: seriesImages } = useMediaImages(MediaType.Series, seriesID)
+  const { data: seriesRecommendations } = useSeriesRecommendationsList(seriesID)
 
-  if (!movie) {
+  if (!series) {
     return "Carregando..."
   }
 
   const productionCompanies = 
-    movie.productionCompanies.length > 0
-    ? movie.productionCompanies.join(', ').concat('.')
+    series.productionCompanies.length > 0
+    ? series.productionCompanies.join(', ').concat('.')
     : '(indisponível)'
 
   return (
     <div>
       <div className="relative bg-gradient-to-t from-gray-950 pt-40 pb-16 min-h-screen px-3 md:px-6">
-        {movieImages?.backdrop && (
+        {seriesImages?.backdrop && (
           <img
-            src={movieImages.backdrop} alt=""
+            src={seriesImages.backdrop} alt=""
             className="absolute w-full h-full object-cover -z-10 top-0 left-0 opacity-30"
           />
         )}
@@ -45,9 +45,9 @@ export default function MoviePage() {
 
           <div className="flex flex-col md:flex-row gap-10 items-center md:items-start justify-between">
             <div className="flex flex-col items-center md:order-2 w-full max-w-sm">
-              {movieImages?.poster && (
+              {seriesImages?.poster && (
                 <img
-                  src={movieImages.poster}
+                  src={seriesImages.poster}
                   alt=""
                   className="min-w-60 max-w-60 rounded-lg shadow-lg"
                 />
@@ -56,9 +56,9 @@ export default function MoviePage() {
 
             <div className="flex flex-col gap-5 max-w-2xl w-full">
               <MediaData.Root>
-                <MediaData.Item>{movie.year}</MediaData.Item>
-                <MediaData.Item>{movie.runtime} min</MediaData.Item>
-                <MediaData.Item><Rating value={movie.rating} /></MediaData.Item>
+                {/* <MediaData.Item>{series.year}</MediaData.Item>
+                <MediaData.Item>{series.runtime} min</MediaData.Item> */}
+                <MediaData.Item><Rating value={series.rating} /></MediaData.Item>
               </MediaData.Root>
 
               <p className="uppercase tracking-widest font-medium -mb-4 text-sm">
@@ -66,18 +66,18 @@ export default function MoviePage() {
               </p>
 
               <h1 className="font-medium text-4xl">
-                {movie.title}
+                {series.title}
               </h1>
 
               <p className="text-gray-300 md:text-justify">
-                {movie.overview || 'Sinopse indisponível'}
+                {series.overview || 'Sinopse indisponível'}
               </p>
 
-              <GenreList genres={movie.genres} />
+              <GenreList genres={series.genres} />
 
               <ul className="list-disc pl-6">
                 <li>
-                  Título original ({movie.originalLanguage}): {movie.originalTitle}
+                  Título original ({series.originalLanguage}): {series.originalTitle}
                 </li>
                 <li>
                   Produtores: {productionCompanies}
@@ -88,8 +88,8 @@ export default function MoviePage() {
         </div>
       </div>
 
-      {movieRecommendations && movieRecommendations.length > 0 && (
-        <MediaListSection title="Com base neste" mediaList={movieRecommendations} />
+      {seriesRecommendations && seriesRecommendations.length > 0 && (
+        <MediaListSection title="Com base neste" mediaList={seriesRecommendations} />
       )}
     </div>
   )

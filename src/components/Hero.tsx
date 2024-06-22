@@ -1,6 +1,6 @@
 import { ChevronDown } from "lucide-react"
 import PlayButton from "./PlayButton"
-import useMovieImages from "@/hooks/use-movie-images"
+import useMediaImages from "@/hooks/use-media-images"
 import Rating from "./Rating"
 import MovieOverview from "@/models/movie-overview"
 import { MediaData } from "./MediaData"
@@ -10,7 +10,7 @@ interface HeroProps {
 }
 
 export default function Hero({ movie }: HeroProps) {
-  const { data: movieImages } = useMovieImages(movie.id)
+  const { data: movieImages } = useMediaImages(movie.mediaType, movie.id)
 
   return (
     <div className="relative pt-40 pb-20 bg-gradient-to-t from-gray-950 px-4">

@@ -1,6 +1,7 @@
 import { IMDbMovieDetails } from "@/interfaces/imdb-api/imdb-media-details";
-import MediaOverview, { MediaType } from "./media-overview";
+import MediaOverview from "./media-overview";
 import IMDBbImage, { PosterSizes } from "@/services/imdb-api/imdb-images";
+import { MediaType } from "@/enums/media-type";
 
 export default class MovieOverview extends MediaOverview {
   readonly mediaType = MediaType.Movie
