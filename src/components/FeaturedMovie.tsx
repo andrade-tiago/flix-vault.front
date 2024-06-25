@@ -1,15 +1,22 @@
-import useMediaImages from "@/hooks/use-media-images";
 import Rating from "./Rating";
 import PlayButton from "./PlayButton";
 import MovieOverview from "@/models/movie-overview";
 import { MediaData } from "./MediaData";
+import { useMediaBackdropImgURL } from "@/hooks/use-images";
+import { BackdropSizes } from "@/services/imdb-api/imdb-images";
 
 interface FeaturedMovieProps {
   movie: MovieOverview
 }
 
 export default function FeaturedMovie({ movie }: FeaturedMovieProps) {
-  const { data: movieImages } = useMediaImages(movie.mediaType, movie.id)
+  const { data: movieBackdropImgURL } = useMediaBackdropImgURL({
+    mediaType: movie.mediaType,
+    mediaId: movie.id,
+    languages: [null],
+    size: BackdropSizes.Original,
+    allowRandomImgIfNotFound: false,
+  })
 
   return (
     <section
@@ -17,9 +24,9 @@ export default function FeaturedMovie({ movie }: FeaturedMovieProps) {
       md:px-20 lg:px-28 bg-gradient-to-r from-gray-950
       to-gray-950/40 items-center min-h-[500px]"
     >
-      {movieImages?.backdrop && (
+      {movieBackdropImgURL && (
         <img
-          src={movieImages.backdrop} alt=""
+          src={movieBackdropImgURL} alt=""
           className="absolute w-full h-full object-cover -z-10 top-0 left-0 opacity-50"
         />
       )}

@@ -1,6 +1,6 @@
 import { IMDbTVSeriesDetails } from "@/interfaces/imdb-api/imdb-media-details";
 import MediaOverview from "./media-overview";
-import IMDBbImage, { PosterSizes } from "@/services/imdb-api/imdb-images";
+import IMDBbImageURL, { PosterSizes } from "@/services/imdb-api/imdb-images";
 import { MediaType } from "@/enums/media-type";
 
 export default class SeriesOverview extends MediaOverview {
@@ -23,7 +23,7 @@ export default class SeriesOverview extends MediaOverview {
     return new SeriesOverview(
       series.id,
       series.overview,
-      IMDBbImage.poster(PosterSizes.W185, series.poster_path),
+      series.poster_path ? IMDBbImageURL.poster(PosterSizes.W185, series.poster_path) : null,
       series.vote_average,
       series.name,
       series.number_of_episodes,

@@ -1,6 +1,6 @@
 import { IMDbMovieDetails } from "@/interfaces/imdb-api/imdb-media-details";
 import MediaOverview from "./media-overview";
-import IMDBbImage, { PosterSizes } from "@/services/imdb-api/imdb-images";
+import IMDBbImageURL, { PosterSizes } from "@/services/imdb-api/imdb-images";
 import { MediaType } from "@/enums/media-type";
 
 export default class MovieOverview extends MediaOverview {
@@ -23,7 +23,7 @@ export default class MovieOverview extends MediaOverview {
     return new MovieOverview(
       movie.id,
       movie.overview,
-      IMDBbImage.poster(PosterSizes.W185, movie.poster_path),
+      movie.poster_path ? IMDBbImageURL.poster(PosterSizes.W185, movie.poster_path) : null,
       movie.vote_average,
       movie.title,
       movie.runtime,

@@ -27,14 +27,16 @@ export enum TitleSizes {
   W500 = "w500",
 }
 
-export default class IMDBbImage {
-  static title(size: TitleSizes, path: string | null | undefined) {
-    return path ? (imgBaseURL + size + path) : null
+export default class IMDBbImageURL {
+  // https://image.tmdb.org/t/p/ + w500 + /exemple.jpg
+
+  static title(size: TitleSizes, path: string) {
+    return imgBaseURL + size + path
   }
-  static poster(size: PosterSizes, path: string | null | undefined) {
-    return path ? (imgBaseURL + size + path) : null
+  static poster(size: PosterSizes, path: string) {
+    return imgBaseURL + size + path
   }
-  static backdrop(size: BackdropSizes, path: string | null | undefined) {
-    return path ? (imgBaseURL + size + path) : null
+  static backdrop(size: BackdropSizes, path: string) {
+    return imgBaseURL + size + path
   }
 }

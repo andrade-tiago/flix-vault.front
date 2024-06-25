@@ -1,5 +1,5 @@
 import IMDbMediaImages from "@/interfaces/imdb-api/imdb-media-images";
-import IMDBbImage, {
+import IMDBbImageURL, {
   BackdropSizes,
   PosterSizes,
   TitleSizes,
@@ -13,22 +13,25 @@ export default class MediaImagesURLs {
   ) {}
 
   static fromIMDbMediaImages(images: IMDbMediaImages) {
-    const titleImgPath: string | null | undefined =
-      images.logos.find(logo => logo.iso_639_1 === 'pt-BR')?.file_path
+    const titleImgPath: string | null =
+      images.logos.find(logo => logo.iso_639_1 === 'pt')?.file_path
       || images.logos.find(logo => logo.iso_639_1 === 'en')?.file_path
+      || null
 
-    const backdropImgPath: string | null | undefined =
+    const backdropImgPath: string | null =
       images.backdrops.find(backdrop => backdrop.iso_639_1 === null)?.file_path
+      || null
 
-    const posterImgPath: string | null | undefined =
-      images.posters.find(poster => poster.iso_639_1 === 'pt-BR')?.file_path
+    const posterImgPath: string | null =
+      images.posters.find(poster => poster.iso_639_1 === 'pt')?.file_path
       || images.posters.find(poster => poster.iso_639_1 === 'en')?.file_path
       || images.posters[0].file_path
+      || null
 
     return new MediaImagesURLs(
-      IMDBbImage.backdrop(BackdropSizes.Original, backdropImgPath),
-      IMDBbImage.poster(PosterSizes.W342, posterImgPath),
-      IMDBbImage.title(TitleSizes.W500, titleImgPath),
+      backdropImgPath ? IMDBbImageURL.backdrop(BackdropSizes.Original, backdropImgPath) : null,
+      posterImgPath ? IMDBbImageURL.poster(PosterSizes.W342, posterImgPath) : null,
+      titleImgPath ? IMDBbImageURL.title(TitleSizes.W500, titleImgPath) : null,
     )
   }
 }

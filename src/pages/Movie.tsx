@@ -4,22 +4,43 @@ import useMovieDetails from "@/hooks/use-movie-details"
 import MediaListSection from "@/components/MediaListSection"
 import BackButton from "@/components/BackButton"
 import useMovieRecommendationsList from "@/hooks/use-movie-recommendations-list"
-import useMediaImages from "@/hooks/use-media-images"
 import Rating from "@/components/Rating"
 import { MediaData } from "@/components/MediaData"
 import { MediaType } from "@/enums/media-type"
 import { useEffect } from "react"
+import { useMediaBackdropImgURL, useMediaPosterImgURL, useMediaTitleImgURL } from "@/hooks/use-images"
+import { BackdropSizes, PosterSizes, TitleSizes } from "@/services/imdb-api/imdb-images"
 
-type RouteParams = {
-  id: string
-}
+type RouteParams = { id: string }
 
 export default function MoviePage() {
   const params = useParams<RouteParams>()
   const movieID = Number(params.id)
 
   const { data: movie } = useMovieDetails(movieID)
-  const { data: movieImages } = useMediaImages(MediaType.Movie, movieID)
+
+  const { data: movieBackdropImgURL } = useMediaBackdropImgURL({
+    mediaType: MediaType.Movie,
+    mediaId: movieID,
+    languages: [null],
+    size: BackdropSizes.Original,
+    allowRandomImgIfNotFound: false,
+  })
+  const { data: moviePosterImgURL } = useMediaPosterImgURL({
+    mediaType: MediaType.Movie,
+    mediaId: movieID,
+    languages: ['pt', 'en'],
+    size: PosterSizes.W500,
+    allowRandomImgIfNotFound: true,
+  })
+  const { data: movieTitleImgURL } = useMediaTitleImgURL({
+    mediaType: MediaType.Movie,
+    mediaId: movieID,
+    languages: ['pt'],
+    size: TitleSizes.W500,
+    allowRandomImgIfNotFound: false,
+  })
+
   const { data: movieRecommendations } = useMovieRecommendationsList(movieID)
 
   useEffect(() => {
@@ -38,9 +59,9 @@ export default function MoviePage() {
   return (
     <div>
       <div className="relative bg-gradient-to-t from-gray-950 pt-40 pb-16 min-h-screen px-3 md:px-6">
-        {movieImages?.backdrop && (
+        {movieBackdropImgURL && (
           <img
-            src={movieImages.backdrop} alt=""
+            src={movieBackdropImgURL} alt=""
             className="absolute w-full h-full object-cover -z-10 top-0 left-0 opacity-30"
           />
         )}
@@ -48,16 +69,16 @@ export default function MoviePage() {
         <div className="flex flex-col gap-10 mx-auto max-w-2xl sm:max-w-6xl">
           <BackButton />
 
-          <div className="flex flex-col md:flex-row gap-10 items-center md:items-start justify-between">
-            <div className="flex flex-col items-center md:order-2 w-full max-w-sm">
-              {movieImages?.poster && (
+          <div className="flex flex-col md:flex-row gap-10 items-center md:items-start">
+            {moviePosterImgURL && (
+              <div className="flex flex-col items-center">
                 <img
-                  src={movieImages.poster}
+                  src={moviePosterImgURL}
                   alt=""
                   className="min-w-60 max-w-60 rounded-lg shadow-lg"
                 />
-              )}
-            </div>
+              </div>
+            )}
 
             <div className="flex flex-col gap-5 max-w-2xl w-full">
               <MediaData.Root>
@@ -66,12 +87,19 @@ export default function MoviePage() {
                 <MediaData.Item><Rating value={movie.rating} /></MediaData.Item>
               </MediaData.Root>
 
-              <p className="uppercase tracking-widest font-medium -mb-4 text-sm">
+              <p className="uppercase tracking-widest font-medium text-sm">
                 Assistir a
               </p>
 
               <h1 className="font-medium text-4xl">
-                {movie.title}
+                {movieTitleImgURL ? (
+                  <img
+                    src={movieTitleImgURL}
+                    alt={movie.title}
+                    title={movie.title}
+                    className="max-w-full max-h-32 mx-auto"
+                  />
+                ): movie.title}
               </h1>
 
               <p className="text-gray-300 md:text-justify">
