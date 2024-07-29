@@ -48,17 +48,15 @@ export default function MediaCard({ media }: CardProps) {
       </h3>
 
       <MediaData.Root className="w-full text-sm">
+        <MediaData.Item>{media.year}</MediaData.Item>
+
         {media instanceof MovieOverview && (
           <>
-            <MediaData.Item>{media.year}</MediaData.Item>
-            <MediaData.Item>
-              {formatMinutes(media.runtime)}
-            </MediaData.Item>
+            <MediaData.Item>{formatMinutes(media.runtime)}</MediaData.Item>
           </>
         )}
         {media instanceof SeriesOverview && (
           <>
-            <MediaData.Item>{media.lastAirDate.getFullYear()}</MediaData.Item>
             <MediaData.Item>{media.seasons} T</MediaData.Item>
           </>
         )}

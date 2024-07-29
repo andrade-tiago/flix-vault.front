@@ -12,11 +12,11 @@ export default class MovieOverview extends MediaOverview {
     posterURL: string | null,
     rating: number,
     title: string,
+    year: number,
 
     readonly runtime: number,
-    readonly year: number,
   ) {
-    super(id, overview, posterURL, rating, title)
+    super(id, overview, posterURL, rating, title, year)
   }
 
   static fromIMDbMovieDetails(movie: IMDbMovieDetails) {
@@ -26,8 +26,8 @@ export default class MovieOverview extends MediaOverview {
       movie.poster_path ? IMDBbImageURL.poster(PosterSizes.W185, movie.poster_path) : null,
       movie.vote_average,
       movie.title,
-      movie.runtime,
       new Date(movie.release_date).getFullYear(),
+      movie.runtime,
     )
   }
 }

@@ -9,5 +9,6 @@ export default abstract class MediaOverview {
     readonly posterURL: string | null,
     readonly rating: number,
     readonly title: string,
+    readonly year: number,
   ) {}
 }

@@ -12,11 +12,11 @@ export default class SeriesOverview extends MediaOverview {
     posterPath: string | null,
     rating: number,
     title: string,
+    year: number,
 
     readonly seasons: number,
-    readonly lastAirDate: Date,
   ) {
-    super(id, overview, posterPath, rating, title)
+    super(id, overview, posterPath, rating, title, year)
   }
 
   static fromIMDbSeriesDetails(series: IMDbTVSeriesDetails) {
@@ -26,8 +26,8 @@ export default class SeriesOverview extends MediaOverview {
       series.poster_path ? IMDBbImageURL.poster(PosterSizes.W185, series.poster_path) : null,
       series.vote_average,
       series.name,
+      new Date(series.last_air_date).getFullYear(),
       series.number_of_episodes,
-      new Date(series.last_air_date),
     )
   }
 }
