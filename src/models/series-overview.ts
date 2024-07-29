@@ -13,8 +13,8 @@ export default class SeriesOverview extends MediaOverview {
     rating: number,
     title: string,
 
-    readonly episodes: number,
     readonly seasons: number,
+    readonly lastAirDate: Date,
   ) {
     super(id, overview, posterPath, rating, title)
   }
@@ -27,7 +27,7 @@ export default class SeriesOverview extends MediaOverview {
       series.vote_average,
       series.name,
       series.number_of_episodes,
-      series.number_of_seasons,
+      new Date(series.last_air_date),
     )
   }
 }
