@@ -88,7 +88,7 @@ export interface IMDbTVSeriesDetails extends IMDbMediaDetails {
   first_air_date: string
   in_production: boolean
   languages: string[]
-  last_air_date: string[]
+  last_air_date: string
   last_episode_to_air: IMDbTVSeriesEpisode
   name: string
   next_episode_to_air: string
