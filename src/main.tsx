@@ -8,6 +8,7 @@ import MoviePage from './pages/Movie.tsx'
 import { QueryClientProvider } from 'react-query'
 import { queryClient } from './services/imdb-api/query-client.ts'
 import SeriesPage from './pages/Series.tsx'
+import SearchPage from './pages/Search.tsx'
 
 const router = createBrowserRouter([
   {
@@ -17,6 +18,7 @@ const router = createBrowserRouter([
       { path: '/', element: <HomePage /> },
       { path: '/movie/:id', element: <MoviePage /> },
       { path: '/series/:id', element: <SeriesPage /> },
+      { path: '/search', element: <SearchPage /> },
     ],
   },
 ])
