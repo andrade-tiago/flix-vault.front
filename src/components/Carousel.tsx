@@ -1,3 +1,4 @@
+import { isNumeric } from "@/utils/is-numeric"
 import { motion } from "framer-motion"
 import { ReactNode, useEffect, useRef, useState } from "react"
 
@@ -13,7 +14,7 @@ export default function Carousel({ children }: CarouselProps) {
     function handleCarouselWidthChange() {
       const newWidth = carousel.current!.scrollWidth - carousel.current!.offsetWidth
       
-      if (Number.isFinite(newWidth)) { // is a valid number?
+      if (isNumeric(newWidth)) {
         setWidth(newWidth)
       }
     }

@@ -1,4 +1,4 @@
-const isNumeric = (n: unknown): n is number => Number.isFinite(n)
+import { isNumeric } from "./is-numeric"
 
 const formatMinutes = (minutes: number | null): string => {
   if (!isNumeric(minutes)) {
@@ -6,11 +6,9 @@ const formatMinutes = (minutes: number | null): string => {
   }
 
   return minutes >= 60 ? (
-    `${
-      Math.floor(minutes / 60)
-    }h${
-      (minutes % 60).toString().padStart(2, '0')
-    }`
+    Math.floor(minutes / 60).toString()
+      + 'h'
+      + (minutes % 60).toString().padStart(2, '0')
   ) : (
     `${minutes} min`
   )
