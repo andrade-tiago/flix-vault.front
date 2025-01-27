@@ -1,22 +1,18 @@
 import IMDbGenre from "@/interfaces/imdb-api/imdb-genre";
-import MediaDetails from "./media-details";
 import { IMDbMovieDetails } from "@/interfaces/imdb-api/imdb-media-details";
 
-export default class MovieDetails extends MediaDetails {
+export default class MovieDetails {
   constructor(
-    genres: IMDbGenre[],
-    originalLanguage: string,
-    originalTitle: string,
-    overview: string,
-    productionCompanies: string[],
-    rating: number,
-    title: string,
-
+    readonly genres: IMDbGenre[],
+    readonly originalLanguage: string,
+    readonly originalTitle: string,
+    readonly overview: string,
+    readonly productionCompanies: string[],
+    readonly rating: number,
+    readonly title: string,
     readonly runtime: number,
     readonly year: number,
-  ) {
-    super(genres, originalLanguage, originalTitle, overview, productionCompanies, rating, title)
-  }
+  ) {}
 
   static fromIMDbMovieDetails(movie: IMDbMovieDetails) {
     return new MovieDetails(

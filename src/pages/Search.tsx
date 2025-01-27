@@ -1,4 +1,4 @@
-import MediaCard from "@/components/MediaCard"
+import MovieCard from "@/components/MovieCard"
 import useSearchMovie from "@/hooks/use-search-movie"
 import React from "react"
 import { useLocation } from "react-router-dom"
@@ -18,7 +18,7 @@ const SearchPage: React.FunctionComponent = () => {
     <div>
       <div className="flex gap-4 justify-center flex-wrap mt-40">
         {movies ? movies.map(movie => (
-          <MediaCard media={movie} key={movie.id} />
+          <MovieCard movie={movie} key={movie.id} />
         )) : Array.from({ length: 20 }).map((_, i) => (
           <div
             key={i}

@@ -1,12 +1,6 @@
 import IMDbPaginatedList, { IMDbMovie } from "@/interfaces/imdb-api/imdb-paginated-list";
 import { movieAPI } from "./imdb-api";
-
-export enum IMDbMovieListEndpoint {
-  InTheaters = 'now_playing',
-  Popular = 'popular',
-  TopRated = 'top_rated',
-  UpComing = 'upcoming',
-}
+import { IMDbMovieListEndpoint } from "@/enums/imdb/imdb-movie-list-endpoint";
 
 export default async function getIMDbMovieList(
   listName: IMDbMovieListEndpoint,

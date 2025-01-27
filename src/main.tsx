@@ -1,14 +1,13 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
-import App from './App.tsx'
-import './index.css'
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
+import './index.css'
+import App from './App.tsx'
 import HomePage from './pages/Home.tsx'
 import MoviePage from './pages/Movie.tsx'
+import SearchPage from './pages/Search.tsx'
 import { QueryClientProvider } from 'react-query'
 import { queryClient } from './services/imdb-api/query-client.ts'
-import SeriesPage from './pages/Series.tsx'
-import SearchPage from './pages/Search.tsx'
 
 const router = createBrowserRouter([
   {
@@ -16,8 +15,7 @@ const router = createBrowserRouter([
     element: <App />,
     children: [
       { path: '/', element: <HomePage /> },
-      { path: '/movie/:id', element: <MoviePage /> },
-      { path: '/series/:id', element: <SeriesPage /> },
+      { path: '/movies/:id', element: <MoviePage /> },
       { path: '/search', element: <SearchPage /> },
     ],
   },

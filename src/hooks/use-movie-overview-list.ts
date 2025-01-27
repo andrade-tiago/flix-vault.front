@@ -1,7 +1,8 @@
 import { useQuery, useQueryClient } from "react-query";
-import getIMDbMovieList, { IMDbMovieListEndpoint } from "@/services/imdb-api/get-imdb-movie-list";
 import getIMDbMovieDetails from "@/services/imdb-api/get-imdb-movie-details";
-import MovieOverview from "@/models/movie-overview";
+import MovieOverview from "@/classes/movie-overview";
+import { IMDbMovieListEndpoint } from "@/enums/imdb/imdb-movie-list-endpoint";
+import getIMDbMovieList from "@/services/imdb-api/get-imdb-movie-list";
 
 export default function useMovieOverviewList(
   listName: IMDbMovieListEndpoint,
@@ -15,7 +16,7 @@ export default function useMovieOverviewList(
     const movieOverviewList = imdbMovieList.results.map(
       async movie => {
         const imdbMovieDetails = await queryClient.fetchQuery({
-          queryKey: ['imdb', 'movie', movie.id, 'details'],
+          queryKey: ['imdb', 'movies', movie.id, 'details'],
           queryFn: () => getIMDbMovieDetails(movie.id),
         })
 

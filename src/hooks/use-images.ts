@@ -1,13 +1,11 @@
 import { useQuery, useQueryClient } from "react-query";
-import { MediaType } from "@/enums/media-type";
 import { LanguageCode } from "iso-639-1";
 import IMDBbImageURL, { BackdropSizes, PosterSizes, TitleSizes } from "@/services/imdb-api/imdb-images";
-import getIMDbMediaImages from "@/services/imdb-api/get-imdb-media-images";
+import getIMDbMovieImages from "@/services/imdb-api/get-imdb-movie-images";
 import IMDbImage from "@/interfaces/imdb-api/imdb-image";
 
 type ImgConfig = {
-  mediaType: MediaType
-  mediaId: number
+  movieId: number
   languages: (LanguageCode | null)[]
   allowRandomImgIfNotFound: boolean
 }
@@ -20,8 +18,8 @@ export function useMediaBackdropImgURL(options: backdropImgConfig) {
 
   const queryFn = async () => {
     const images = await queryClient.fetchQuery({
-      queryKey: ['imdb', options.mediaType, options.mediaId, 'images'],
-      queryFn: () => getIMDbMediaImages(options.mediaType, options.mediaId),
+      queryKey: ['imdb', 'movies', options.movieId, 'images'],
+      queryFn: () => getIMDbMovieImages(options.movieId),
     })
 
     const imgPath = filterImg(
@@ -44,8 +42,8 @@ export function useMediaPosterImgURL(options: posterImgConfig) {
 
   const queryFn = async () => {
     const images = await queryClient.fetchQuery({
-      queryKey: ['imdb', options.mediaType, options.mediaId, 'images'],
-      queryFn: () => getIMDbMediaImages(options.mediaType, options.mediaId),
+      queryKey: ['imdb', 'movies', options.movieId, 'images'],
+      queryFn: () => getIMDbMovieImages(options.movieId),
     })
 
     const imgPath = filterImg(
@@ -68,8 +66,8 @@ export function useMediaTitleImgURL(options: titleImgConfig) {
 
   const queryFn = async () => {
     const images = await queryClient.fetchQuery({
-      queryKey: ['imdb', options.mediaType, options.mediaId, 'images'],
-      queryFn: () => getIMDbMediaImages(options.mediaType, options.mediaId),
+      queryKey: ['imdb', 'movies', options.movieId, 'images'],
+      queryFn: () => getIMDbMovieImages(options.movieId),
     })
 
     const imgPath = filterImg(

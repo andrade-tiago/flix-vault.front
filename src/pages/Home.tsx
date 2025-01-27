@@ -2,18 +2,13 @@ import Hero from "@/components/Hero";
 import MediaListSection from "@/components/MediaListSection";
 import FeaturedMovie from "@/components/FeaturedMovie";
 import useMovieOverviewList from "@/hooks/use-movie-overview-list";
-import { IMDbMovieListEndpoint } from "@/services/imdb-api/get-imdb-movie-list";
-import { IMDbTVSeriesListEndpoint } from "@/services/imdb-api/get-imdb-tv-list";
-import useSeriesOverviewList from "@/hooks/use-series-overview-list";
 import { useEffect } from "react";
+import { IMDbMovieListEndpoint } from "@/enums/imdb/imdb-movie-list-endpoint";
 
 export default function HomePage() {
   const movies = {
     inTheaters: useMovieOverviewList(IMDbMovieListEndpoint.InTheaters),
     popular: useMovieOverviewList(IMDbMovieListEndpoint.Popular),
-  }
-  const series = {
-    airingToday: useSeriesOverviewList(IMDbTVSeriesListEndpoint.AiringToday),
   }
 
   useEffect(() => {
@@ -36,10 +31,6 @@ export default function HomePage() {
 
       {movies.popular.data && movies.popular.data.length > 0 && (
         <MediaListSection title="Filmes em alta" mediaList={movies.popular.data} />
-      )}
-
-      {series.airingToday.data && series.airingToday.data.length > 0 && (
-        <MediaListSection title="Séries" mediaList={series.airingToday.data} />
       )}
     </div>
   )

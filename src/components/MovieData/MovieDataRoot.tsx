@@ -1,12 +1,12 @@
 import { ReactNode } from "react";
 import { twMerge } from "tailwind-merge";
 
-interface MediaDataRootProps {
+interface MovieDataRootProps {
   children: ReactNode
   className?: string
 }
 
-export default function MediaDataRoot({ children, className }: MediaDataRootProps) {
+export default function MovieDataRoot({ children, className }: MovieDataRootProps) {
   return (
     <ul className={twMerge('flex w-max justify-between gap-2 items-baseline', className)}>
       {children}

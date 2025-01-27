@@ -5,8 +5,7 @@ import MediaListSection from "@/components/MediaListSection"
 import BackButton from "@/components/BackButton"
 import useMovieRecommendationsList from "@/hooks/use-movie-recommendations-list"
 import Rating from "@/components/Rating"
-import { MediaData } from "@/components/MediaData"
-import { MediaType } from "@/enums/media-type"
+import { MovieData } from "@/components/MovieData"
 import { useEffect } from "react"
 import { useMediaBackdropImgURL, useMediaPosterImgURL, useMediaTitleImgURL } from "@/hooks/use-images"
 import { BackdropSizes, PosterSizes, TitleSizes } from "@/services/imdb-api/imdb-images"
@@ -20,22 +19,19 @@ export default function MoviePage() {
   const { data: movie } = useMovieDetails(movieID)
 
   const { data: movieBackdropImgURL } = useMediaBackdropImgURL({
-    mediaType: MediaType.Movie,
-    mediaId: movieID,
+    movieId: movieID,
     languages: [null],
     size: BackdropSizes.Original,
     allowRandomImgIfNotFound: false,
   })
   const { data: moviePosterImgURL } = useMediaPosterImgURL({
-    mediaType: MediaType.Movie,
-    mediaId: movieID,
+    movieId: movieID,
     languages: ['pt', 'en'],
     size: PosterSizes.W500,
     allowRandomImgIfNotFound: true,
   })
   const { data: movieTitleImgURL } = useMediaTitleImgURL({
-    mediaType: MediaType.Movie,
-    mediaId: movieID,
+    movieId: movieID,
     languages: ['pt'],
     size: TitleSizes.W500,
     allowRandomImgIfNotFound: false,
@@ -81,11 +77,11 @@ export default function MoviePage() {
             )}
 
             <div className="flex flex-col gap-5 max-w-2xl w-full">
-              <MediaData.Root>
-                <MediaData.Item>{movie.year}</MediaData.Item>
-                <MediaData.Item>{movie.runtime} min</MediaData.Item>
-                <MediaData.Item><Rating value={movie.rating} /></MediaData.Item>
-              </MediaData.Root>
+              <MovieData.Root>
+                <MovieData.Item>{movie.year}</MovieData.Item>
+                <MovieData.Item>{movie.runtime} min</MovieData.Item>
+                <MovieData.Item><Rating value={movie.rating} /></MovieData.Item>
+              </MovieData.Root>
 
               <p className="uppercase tracking-widest font-medium text-sm">
                 Assistir a

@@ -1,7 +1,7 @@
 import Rating from "./Rating";
 import PlayButton from "./PlayButton";
-import MovieOverview from "@/models/movie-overview";
-import { MediaData } from "./MediaData";
+import MovieOverview from "@/classes/movie-overview";
+import { MovieData } from "./MovieData";
 import { useMediaBackdropImgURL } from "@/hooks/use-images";
 import { BackdropSizes } from "@/services/imdb-api/imdb-images";
 
@@ -11,8 +11,7 @@ interface FeaturedMovieProps {
 
 export default function FeaturedMovie({ movie }: FeaturedMovieProps) {
   const { data: movieBackdropImgURL } = useMediaBackdropImgURL({
-    mediaType: movie.mediaType,
-    mediaId: movie.id,
+    movieId: movie.id,
     languages: [null],
     size: BackdropSizes.Original,
     allowRandomImgIfNotFound: false,
@@ -32,11 +31,11 @@ export default function FeaturedMovie({ movie }: FeaturedMovieProps) {
       )}
 
       <div className="max-w-xl flex gap-8 flex-col">
-        <MediaData.Root>
-          <MediaData.Item>{movie.year}</MediaData.Item>
-          <MediaData.Item>{movie.runtime} min</MediaData.Item>
-          <MediaData.Item><Rating value={movie.rating} /></MediaData.Item>
-        </MediaData.Root>
+        <MovieData.Root>
+          <MovieData.Item>{movie.year}</MovieData.Item>
+          <MovieData.Item>{movie.runtime} min</MovieData.Item>
+          <MovieData.Item><Rating value={movie.rating} /></MovieData.Item>
+        </MovieData.Root>
 
         <h3 className="text-4xl font-medium">
           {movie.title}
@@ -46,7 +45,7 @@ export default function FeaturedMovie({ movie }: FeaturedMovieProps) {
           {movie.overview}
         </p>
 
-        <PlayButton mediaType={movie.mediaType} mediaId={movie.id} />
+        <PlayButton movieId={movie.id} />
       </div>
     </section>
   ) 

@@ -1,10 +1,10 @@
 import { ReactNode } from "react"
 
-interface MediaDataItemProps {
+interface MovieDataItemProps {
   children: ReactNode
 }
 
-export default function MediaDataItem({ children }: MediaDataItemProps) {
+export default function MovieDataItem({ children }: MovieDataItemProps) {
   return (
     <li>
       {children}

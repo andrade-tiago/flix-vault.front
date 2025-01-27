@@ -1,8 +1,8 @@
 import { ChevronDown } from "lucide-react"
 import PlayButton from "./PlayButton"
 import Rating from "./Rating"
-import MovieOverview from "@/models/movie-overview"
-import { MediaData } from "./MediaData"
+import MovieOverview from "@/classes/movie-overview"
+import { MovieData } from "./MovieData"
 import { useMediaBackdropImgURL, useMediaTitleImgURL } from "@/hooks/use-images"
 import { BackdropSizes, TitleSizes } from "@/services/imdb-api/imdb-images"
 
@@ -12,15 +12,13 @@ interface HeroProps {
 
 export default function Hero({ movie }: HeroProps) {
   const { data: movieBackdropImgURL } = useMediaBackdropImgURL({
-    mediaType: movie.mediaType,
-    mediaId: movie.id,
+    movieId: movie.id,
     languages: [null],
     size: BackdropSizes.Original,
     allowRandomImgIfNotFound: false,
   })
   const { data: movieTitleImgURL} = useMediaTitleImgURL({
-    mediaType: movie.mediaType,
-    mediaId: movie.id,
+    movieId: movie.id,
     languages: ['pt', 'en'],
     size: TitleSizes.W500,
     allowRandomImgIfNotFound: true,
@@ -47,11 +45,11 @@ export default function Hero({ movie }: HeroProps) {
           ) : movie.title}
         </h3>
 
-        <MediaData.Root>
-          <MediaData.Item>{movie.year}</MediaData.Item>
-          <MediaData.Item>{movie.runtime} min</MediaData.Item>
-          <MediaData.Item><Rating value={movie.rating} /></MediaData.Item>
-        </MediaData.Root>
+        <MovieData.Root>
+          <MovieData.Item>{movie.year}</MovieData.Item>
+          <MovieData.Item>{movie.runtime} min</MovieData.Item>
+          <MovieData.Item><Rating value={movie.rating} /></MovieData.Item>
+        </MovieData.Root>
 
         <h4 className="font-medium uppercase tracking-widest text-sm -mb-4">
           Sinopse
@@ -60,7 +58,7 @@ export default function Hero({ movie }: HeroProps) {
           {movie.overview}
         </p>
 
-        <PlayButton mediaType={movie.mediaType} mediaId={movie.id} className="shadow-amber-500" />
+        <PlayButton movieId={movie.id} className="shadow-amber-500" />
 
         <ChevronDown className="mt-5" />
       </div>

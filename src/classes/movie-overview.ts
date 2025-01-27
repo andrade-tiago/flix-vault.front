@@ -1,23 +1,16 @@
 import { IMDbMovieDetails } from "@/interfaces/imdb-api/imdb-media-details";
-import MediaOverview from "./media-overview";
 import IMDBbImageURL, { PosterSizes } from "@/services/imdb-api/imdb-images";
-import { MediaType } from "@/enums/media-type";
 
-export default class MovieOverview extends MediaOverview {
-  readonly mediaType = MediaType.Movie
-
+export default class MovieOverview {
   constructor(
-    id: number,
-    overview: string,
-    posterURL: string | null,
-    rating: number,
-    title: string,
-    year: number,
-
+    readonly id: number,
+    readonly overview: string,
+    readonly posterURL: string | null,
+    readonly rating: number,
+    readonly title: string,
+    readonly year: number,
     readonly runtime: number,
-  ) {
-    super(id, overview, posterURL, rating, title, year)
-  }
+  ) {}
 
   static fromIMDbMovieDetails(movie: IMDbMovieDetails) {
     return new MovieOverview(
