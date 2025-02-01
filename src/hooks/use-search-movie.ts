@@ -1,4 +1,5 @@
 import MovieOverview from "@/classes/movie-overview";
+import PaginatedList from "@/classes/paginated-list";
 import getIMDbMovieDetails from "@/services/imdb-api/get-imdb-movie-details";
 import searchIMDbMovie, { searchIMDbMovieConfig } from "@/services/imdb-api/search-imdb-movie";
 import { useQuery, useQueryClient } from "react-query";
@@ -21,13 +22,24 @@ const useSearchMovie = (config: searchIMDbMovieConfig) => {
       return MovieOverview.fromIMDbMovieDetails(movieDetails)
     })
 
-    return Promise.all(moviesOverviews)
+    return new PaginatedList(
+      await Promise.all(moviesOverviews),
+      imdbMovies.page,
+      imdbMovies.total_pages,
+      imdbMovies.total_results,
+    )
   }
 
-  return useQuery({
+  const query = useQuery({
     queryFn,
     queryKey: ['search', 'movies', config.query, config.pageNumber],
   })
+
+  return {
+    results: query.data,
+    isLoading: query.isLoading,
+    error: query.error,
+  }
 }
 
 export default useSearchMovie
