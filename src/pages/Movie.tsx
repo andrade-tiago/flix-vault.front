@@ -9,6 +9,7 @@ import { MovieData } from "@/components/MovieData"
 import { useEffect } from "react"
 import { useMediaBackdropImgURL, useMediaPosterImgURL, useMediaTitleImgURL } from "@/hooks/use-images"
 import { BackdropSizes, PosterSizes, TitleSizes } from "@/services/imdb-api/imdb-images"
+import MoviePosterLoading from "@/components/Loading/MoviePosterLoading"
 
 type RouteParams = { id: string }
 
@@ -58,7 +59,7 @@ export default function MoviePage() {
         {movieBackdropImgURL && (
           <img
             src={movieBackdropImgURL} alt=""
-            className="absolute w-full h-full object-cover -z-10 top-0 left-0 opacity-30"
+            className="absolute w-full h-full object-cover -z-10 top-0 left-0 opacity-20"
           />
         )}
 
@@ -66,7 +67,7 @@ export default function MoviePage() {
           <BackButton />
 
           <div className="flex flex-col md:flex-row gap-10 items-center md:items-start">
-            {moviePosterImgURL && (
+            {moviePosterImgURL ? (
               <div className="flex flex-col items-center">
                 <img
                   src={moviePosterImgURL}
@@ -74,6 +75,8 @@ export default function MoviePage() {
                   className="min-w-60 max-w-60 rounded-lg shadow-lg"
                 />
               </div>
+            ) : (
+              <MoviePosterLoading />
             )}
 
             <div className="flex flex-col gap-5 max-w-2xl w-full">
@@ -93,7 +96,7 @@ export default function MoviePage() {
                     src={movieTitleImgURL}
                     alt={movie.title}
                     title={movie.title}
-                    className="max-w-full max-h-32 mx-auto"
+                    className="max-w-full max-h-32 mx-auto shadow-zinc-500 drop-shadow-[0_0_1px_#fff9]"
                   />
                 ): movie.title}
               </h1>
