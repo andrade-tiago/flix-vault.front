@@ -29,7 +29,7 @@ export default function Hero({ movie }: HeroProps) {
       {movieBackdropImgURL && (
         <img
           src={movieBackdropImgURL} alt=""
-          className="absolute w-full h-full object-cover -z-10 top-0 left-0 opacity-50"
+          className="absolute w-full h-full object-cover -z-10 top-0 left-0 opacity-20"
         />
       )}
 
