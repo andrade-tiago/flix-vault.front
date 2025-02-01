@@ -46,7 +46,7 @@ export default function MovieCard({ movie }: CardProps) {
       </h3>
 
       <MovieData.Root className="w-full text-sm">
-        <MovieData.Item>{movie.year}</MovieData.Item>
+        <MovieData.Item>{movie.year || 'N/A'}</MovieData.Item>
         <MovieData.Item>{formatMinutes(movie.runtime)}</MovieData.Item>
         <MovieData.Item><Rating value={movie.rating} /></MovieData.Item>
       </MovieData.Root>
