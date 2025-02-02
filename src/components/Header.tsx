@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import SearchBar from "./SearchBar";
-import { Home } from "lucide-react";
+import { LuHouse } from "react-icons/lu";
 
 export default function Header() {
   return (
@@ -12,7 +12,7 @@ export default function Header() {
               to="/"
               className="border-b-2 border-gray-400 p-2 block"
             >
-              <Home />
+              <LuHouse className="text-2xl" />
             </Link>
           </li>
         </ul>

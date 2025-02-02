@@ -1,4 +1,4 @@
-import { Play } from "lucide-react"
+import { FaPlay } from "react-icons/fa6"
 import { Link } from "react-router-dom"
 import { twMerge } from "tailwind-merge"
 
@@ -19,10 +19,10 @@ export default function PlayButton({ movieId, className }: PlayButtonProps) {
         text-sm font-medium shadow-2xl outline-none
         focus:outline-dashed focus:outline-1
         focus:outline-gray-300 w-min`,
-        className
+        className,
       )}
     >
-      <Play className="size-4" />
+      <FaPlay className="size-4" />
       Assistir
     </Link>
   )
