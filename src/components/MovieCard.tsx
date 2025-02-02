@@ -30,7 +30,7 @@ export default function MovieCard({ movie }: CardProps) {
         >
           <p
             className={twMerge(
-              'line-clamp-[7]',
+              'line-clamp-[7] w-full',
               movie.overview ? 'text-gray-100' : 'text-gray-400',
             )}
           >
