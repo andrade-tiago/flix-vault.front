@@ -1,8 +1,9 @@
 import MovieCardLoading from "@/components/Loading/MovieCardLoading"
 import MovieCard from "@/components/MovieCard"
+import IconButton from "@/components/OutlinedButton"
 import useSearchMovie from "@/hooks/use-search-movie"
-import { ChevronFirst, ChevronLast, ChevronLeft, ChevronRight } from "lucide-react"
 import { useEffect, useState } from "react"
+import { LuChevronFirst, LuChevronLast, LuChevronLeft, LuChevronRight } from "react-icons/lu"
 import { useSearchParams } from "react-router-dom"
 import { twMerge } from "tailwind-merge"
 
@@ -12,15 +13,12 @@ const SearchPage: React.FunctionComponent = () => {
 
   const searchQuery = searchParams.get('query') ?? ''
 
-  const search = useSearchMovie({
-    query: searchQuery,
-    pageNumber,
-  })
+  const search = useSearchMovie({ query: searchQuery, pageNumber })
 
   const handlePreviousPage = () => setPageNumber(state => state - 1)
-  const handleFirstPage = () => setPageNumber(1)
-  const handleNextPage = () => setPageNumber(state => state + 1)
-  const handleLastPage = () => setPageNumber(search.results?.totalPages || 1)
+  const handleNextPage     = () => setPageNumber(state => state + 1)
+  const handleFirstPage    = () => setPageNumber(1)
+  const handleLastPage     = () => setPageNumber(search.results?.totalPages || 1)
 
   const handleChangeDocumentTitle = () => {
     const searchState = search.results
@@ -37,12 +35,14 @@ const SearchPage: React.FunctionComponent = () => {
     })
     window.scroll({ top: 0, behavior: 'smooth' })
   }
+  const handleChangeSearch = () => setPageNumber(1)
 
   useEffect(handleChangePageNumber, [pageNumber])
-  useEffect(handleChangeDocumentTitle, [searchQuery, search.results])
+  useEffect(handleChangeDocumentTitle, [search.results])
+  useEffect(handleChangeSearch, [searchQuery])
 
   return (
-    <div className="flex flex-col gap-8 mt-40">
+    <div className="flex flex-col gap-8 mt-40 mb-8">
       <p className={twMerge(
         "leading-8 flex items-center gap-2 justify-center",
         search.results ? null : "animate-pulse",
@@ -64,24 +64,22 @@ const SearchPage: React.FunctionComponent = () => {
       </div>
 
       <div className="flex justify-center gap-2 items-center">
-        <button
-          className="border border-w-[1px] border-gray-700 rounded p-2"
+        <IconButton
           title="Primeira página"
           onClick={handleFirstPage}
-        >
-          <ChevronFirst />
-        </button>
-        <button
-          className="border border-w-[1px] border-gray-700 rounded p-2"
+          disabled={pageNumber === 1}
+          Icon={LuChevronFirst}
+        />
+        <IconButton
           title="Página anterior"
           onClick={handlePreviousPage}
-        >
-          <ChevronLeft />
-        </button>
+          disabled={pageNumber === 1}
+          Icon={LuChevronLeft}
+        />
 
         <p className={twMerge(
           "px-4",
-          search.results ? "" : "animate-pulse",
+          search.results ? null : "animate-pulse",
         )}>
           {search.results
             ? `Página ${pageNumber} de ${search.results?.totalPages}`
@@ -89,20 +87,18 @@ const SearchPage: React.FunctionComponent = () => {
           }
         </p>
 
-        <button
-          className="border border-w-[1px] border-gray-700 rounded p-2"
+        <IconButton
           title="Próxima página"
           onClick={handleNextPage}
-        >
-          <ChevronRight />
-        </button>
-        <button
-          className="border border-w-[1px] border-gray-700 rounded p-2"
+          disabled={pageNumber === search.results?.totalPages}
+          Icon={LuChevronRight}
+        />
+        <IconButton
           title="Última página"
           onClick={handleLastPage}
-        >
-          <ChevronLast />
-        </button>
+          disabled={pageNumber === search.results?.totalPages}
+          Icon={LuChevronLast}
+        />
       </div>
     </div>
   )
