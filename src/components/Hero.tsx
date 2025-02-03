@@ -1,10 +1,10 @@
-import { ChevronDown } from "lucide-react"
 import PlayButton from "./PlayButton"
 import Rating from "./Rating"
 import MovieOverview from "@/classes/movie-overview"
 import { MovieData } from "./MovieData"
 import { useMediaBackdropImgURL, useMediaTitleImgURL } from "@/hooks/use-images"
 import { BackdropSizes, TitleSizes } from "@/services/imdb-api/imdb-images"
+import { LuChevronDown } from "react-icons/lu"
 
 interface HeroProps {
   movie: MovieOverview
@@ -60,7 +60,7 @@ export default function Hero({ movie }: HeroProps) {
 
         <PlayButton movieId={movie.id} className="shadow-amber-500" />
 
-        <ChevronDown className="mt-5" />
+        <LuChevronDown className="mt-5" />
       </div>
     </div>
   )

@@ -1,4 +1,4 @@
-import { ChevronLeft } from "lucide-react";
+import { LuChevronLeft } from "react-icons/lu";
 import { useNavigate } from "react-router-dom";
 
 export default function BackButton() {
@@ -10,7 +10,7 @@ export default function BackButton() {
       title="Voltar"
       className="border rounded-3xl border-gray-400 p-2 w-min"
     >
-      <ChevronLeft />
+      <LuChevronLeft />
     </button>
   )
 }
