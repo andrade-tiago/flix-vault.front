@@ -12,10 +12,10 @@ type MovieDataProps = {
 export default function MovieData({ className, movie }: MovieDataProps) {
   return (
     <ul className={twMerge("flex w-max justify-between gap-4 items-baseline", className)}>
-      <li>
-        {movie.year}
+      <li title="Ano de lançamento">
+        {movie.year || '----'}
       </li>
-      <li>
+      <li title="Duração">
         {formatMinutes(movie.runtime)}
       </li>
       <li>
