@@ -4,8 +4,7 @@ import useMovieDetails from "@/hooks/use-movie-details"
 import MediaListSection from "@/components/MediaListSection"
 import BackButton from "@/components/BackButton"
 import useMovieRecommendationsList from "@/hooks/use-movie-recommendations-list"
-import Rating from "@/components/Rating"
-import { MovieData } from "@/components/MovieData"
+import MovieData from "@/components/MovieData"
 import { useEffect } from "react"
 import { useMediaBackdropImgURL, useMediaPosterImgURL, useMediaTitleImgURL } from "@/hooks/use-images"
 import { BackdropSizes, PosterSizes, TitleSizes } from "@/services/imdb-api/imdb-images"
@@ -80,11 +79,7 @@ export default function MoviePage() {
             )}
 
             <div className="flex flex-col gap-5 max-w-2xl w-full">
-              <MovieData.Root>
-                <MovieData.Item>{movie.year}</MovieData.Item>
-                <MovieData.Item>{movie.runtime} min</MovieData.Item>
-                <MovieData.Item><Rating value={movie.rating} /></MovieData.Item>
-              </MovieData.Root>
+              <MovieData movie={movie} />
 
               <p className="uppercase tracking-widest font-medium text-sm">
                 Assistir a

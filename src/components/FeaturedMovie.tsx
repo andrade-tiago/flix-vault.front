@@ -1,9 +1,8 @@
-import Rating from "./Rating";
 import PlayButton from "./PlayButton";
 import MovieOverview from "@/classes/movie-overview";
-import { MovieData } from "./MovieData";
 import { useMediaBackdropImgURL } from "@/hooks/use-images";
 import { BackdropSizes } from "@/services/imdb-api/imdb-images";
+import MovieData from "./MovieData";
 
 interface FeaturedMovieProps {
   movie: MovieOverview
@@ -31,11 +30,7 @@ export default function FeaturedMovie({ movie }: FeaturedMovieProps) {
       )}
 
       <div className="max-w-xl flex gap-8 flex-col">
-        <MovieData.Root>
-          <MovieData.Item>{movie.year}</MovieData.Item>
-          <MovieData.Item>{movie.runtime} min</MovieData.Item>
-          <MovieData.Item><Rating value={movie.rating} /></MovieData.Item>
-        </MovieData.Root>
+        <MovieData movie={movie} />
 
         <h3 className="text-4xl font-medium">
           {movie.title}

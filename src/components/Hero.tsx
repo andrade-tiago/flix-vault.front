@@ -1,10 +1,9 @@
-import PlayButton from "./PlayButton"
-import Rating from "./Rating"
+import PlayButton from "@/components/PlayButton"
 import MovieOverview from "@/classes/movie-overview"
-import { MovieData } from "./MovieData"
 import { useMediaBackdropImgURL, useMediaTitleImgURL } from "@/hooks/use-images"
 import { BackdropSizes, TitleSizes } from "@/services/imdb-api/imdb-images"
 import { LuChevronDown } from "react-icons/lu"
+import MovieData from "./MovieData"
 
 interface HeroProps {
   movie: MovieOverview
@@ -45,11 +44,7 @@ export default function Hero({ movie }: HeroProps) {
           ) : movie.title}
         </h3>
 
-        <MovieData.Root>
-          <MovieData.Item>{movie.year}</MovieData.Item>
-          <MovieData.Item>{movie.runtime} min</MovieData.Item>
-          <MovieData.Item><Rating value={movie.rating} /></MovieData.Item>
-        </MovieData.Root>
+        <MovieData movie={movie} />
 
         <h4 className="font-medium uppercase tracking-widest text-sm -mb-4">
           Sinopse

@@ -1,9 +1,7 @@
 import { twMerge } from "tailwind-merge"
 import PlayButton from "./PlayButton"
-import Rating from "./Rating"
 import MovieOverview from "@/classes/movie-overview"
-import { MovieData } from "./MovieData"
-import formatMinutes from "@/utils/format-minutes"
+import MovieData from "./MovieData"
 
 interface CardProps {
   movie: MovieOverview
@@ -45,11 +43,7 @@ export default function MovieCard({ movie }: CardProps) {
         {movie.title}
       </h3>
 
-      <MovieData.Root className="w-full text-sm">
-        <MovieData.Item>{movie.year || 'N/A'}</MovieData.Item>
-        <MovieData.Item>{formatMinutes(movie.runtime)}</MovieData.Item>
-        <MovieData.Item><Rating value={movie.rating} /></MovieData.Item>
-      </MovieData.Root>
+      <MovieData movie={movie} className="w-full text-sm" />
     </div>
   )
 }
