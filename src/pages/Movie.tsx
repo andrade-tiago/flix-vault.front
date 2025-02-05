@@ -1,7 +1,6 @@
 import { useParams } from "react-router-dom"
 import GenreList from "@/components/GenreList"
 import useMovieDetails from "@/hooks/use-movie-details"
-import MediaListSection from "@/components/MediaListSection"
 import BackButton from "@/components/BackButton"
 import useMovieRecommendationsList from "@/hooks/use-movie-recommendations-list"
 import MovieData from "@/components/MovieData"
@@ -9,6 +8,7 @@ import { useEffect } from "react"
 import { useMediaBackdropImgURL, useMediaPosterImgURL, useMediaTitleImgURL } from "@/hooks/use-images"
 import { BackdropSizes, PosterSizes, TitleSizes } from "@/services/imdb-api/imdb-images"
 import MoviePosterLoading from "@/components/Loading/MoviePosterLoading"
+import MovieCarousel from "@/components/MovieCarousel"
 
 type RouteParams = { id: string }
 
@@ -115,9 +115,13 @@ export default function MoviePage() {
         </div>
       </div>
 
-      {movieRecommendations && movieRecommendations.length > 0 && (
-        <MediaListSection title="Com base neste" mediaList={movieRecommendations} />
-      )}
+      <section className="px-3 sm:px-5 md:px-7 xl:px-9 flex flex-col gap-2">
+        <h3 className="h3">
+          Com base neste
+        </h3>
+
+        <MovieCarousel movieList={movieRecommendations} />
+      </section>
     </div>
   )
 }

@@ -3,9 +3,7 @@ import FeaturedMovie from "@/components/FeaturedMovie";
 import useMovieOverviewList from "@/hooks/use-movie-overview-list";
 import { useEffect } from "react";
 import { IMDbMovieListEndpoint } from "@/enums/imdb/imdb-movie-list-endpoint";
-import Carousel from "@/components/Carousel";
-import MovieCardLoading from "@/components/Loading/MovieCardLoading";
-import MovieCard from "@/components/MovieCard";
+import MovieCarousel from "@/components/MovieCarousel";
 
 export default function HomePage() {
   const movieLists = [
@@ -15,7 +13,6 @@ export default function HomePage() {
   ]
 
   const movieListSectionClasses = "px-3 sm:px-5 md:px-7 xl:px-9 flex flex-col gap-2"
-  const tenPositionsEmptyArray = Array.from({ length: 10 })
 
   useEffect(() => {
     document.title = 'FlixVault: seus filmes favoritos!'
@@ -34,17 +31,7 @@ export default function HomePage() {
           Nos cinemas
         </h3>
 
-        <Carousel>
-          {movieLists[0].isLoading || movieLists[0].error ? (
-            tenPositionsEmptyArray.map((_, i) => (
-              <MovieCardLoading key={i} />
-            ))
-          ) : movieLists[0].data && (movieLists[0].data.length > 2) && (
-            movieLists[0].data.map((movie, i) => (
-              <MovieCard movie={movie} key={i} />
-            ))
-          )}
-        </Carousel>
+        <MovieCarousel movieList={movieLists[0].data?.slice(2)} />
       </section>
 
       {movieLists[0].data && (movieLists[0].data.length > 1) && (
@@ -56,17 +43,7 @@ export default function HomePage() {
           Em alta
         </h3>
 
-        <Carousel>
-          {movieLists[1].isLoading || movieLists[1].error ? (
-            tenPositionsEmptyArray.map((_, i) => (
-              <MovieCardLoading key={i} />
-            ))
-          ) : movieLists[1].data && (movieLists[1].data.length > 0) && (
-            movieLists[1].data.map((movie, i) => (
-              <MovieCard movie={movie} key={i} />
-            ))
-          )}
-        </Carousel>
+        <MovieCarousel movieList={movieLists[1].data} />
       </section>
 
       <section className={movieListSectionClasses}>
@@ -74,17 +51,7 @@ export default function HomePage() {
           Escolha do editor
         </h3>
 
-        <Carousel>
-          {movieLists[2].isLoading || movieLists[2].error ? (
-            tenPositionsEmptyArray.map((_, i) => (
-              <MovieCardLoading key={i} />
-            ))
-          ) : movieLists[2].data && (movieLists[2].data.length > 0) && (
-            movieLists[2].data.map((movie, i) => (
-              <MovieCard movie={movie} key={i} />
-            ))
-          )}
-        </Carousel>
+        <MovieCarousel movieList={movieLists[2].data} />
       </section>
     </div>
   )
