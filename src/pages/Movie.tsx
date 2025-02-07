@@ -9,6 +9,7 @@ import { useMediaBackdropImgURL, useMediaPosterImgURL, useMediaTitleImgURL } fro
 import { BackdropSizes, PosterSizes, TitleSizes } from "@/services/imdb-api/imdb-images"
 import MoviePosterLoading from "@/components/Loading/MoviePosterLoading"
 import MovieCarousel from "@/components/MovieCarousel"
+import ContentSection from "@/components/ContentSection"
 
 type RouteParams = { id: string }
 
@@ -115,13 +116,13 @@ export default function MoviePage() {
         </div>
       </div>
 
-      <section className="px-3 sm:px-5 md:px-7 xl:px-9 flex flex-col gap-2">
+      <ContentSection>
         <h3 className="h3">
           Com base neste
         </h3>
 
         <MovieCarousel movieList={movieRecommendations} />
-      </section>
+      </ContentSection>
     </div>
   )
 }

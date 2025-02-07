@@ -5,13 +5,12 @@ import { useEffect } from "react";
 import { IMDbMovieListEndpoint } from "@/enums/imdb/imdb-movie-list-endpoint";
 import MovieCarousel from "@/components/MovieCarousel";
 import HeroLoading from "@/components/Loading/HeroLoading";
+import ContentSection from "@/components/ContentSection";
 
 export default function HomePage() {
   const inTheatersMovieList = useMovieOverviewList(IMDbMovieListEndpoint.InTheaters)
   const topRatedMovieList = useMovieOverviewList(IMDbMovieListEndpoint.TopRated)
   const popularMovieList = useMovieOverviewList(IMDbMovieListEndpoint.Popular)
-
-  const movieListSectionClasses = "px-3 sm:px-5 md:px-7 xl:px-9 flex flex-col gap-2"
 
   useEffect(() => {
     document.title = 'FlixVault: seus filmes favoritos!'
@@ -25,33 +24,33 @@ export default function HomePage() {
         <HeroLoading />
       )}
 
-      <section className={movieListSectionClasses}>
+      <ContentSection>
         <h3 className="h3">
           Nos cinemas
         </h3>
 
         <MovieCarousel movieList={inTheatersMovieList.data?.slice(2)} />
-      </section>
+      </ContentSection>
 
       {inTheatersMovieList.data && (inTheatersMovieList.data.length > 1) && (
         <FeaturedMovie movie={inTheatersMovieList.data[1]} />
       )}
 
-      <section className={movieListSectionClasses}>
+      <ContentSection>
         <h3 className="h3">
           Mais bem avaliados
         </h3>
 
         <MovieCarousel movieList={topRatedMovieList.data} />
-      </section>
+      </ContentSection>
 
-      <section className={movieListSectionClasses}>
+      <ContentSection>
         <h3 className="h3">
           Popular
         </h3>
 
         <MovieCarousel movieList={popularMovieList.data} />
-      </section>
+      </ContentSection>
     </div>
   )
 }
