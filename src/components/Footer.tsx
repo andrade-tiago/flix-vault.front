@@ -14,12 +14,12 @@ export default function Footer() {
 
           <ul className="flex gap-4 text-3xl w-max">
             <li title="LinkedIn">
-              <a href="https://www.linkedin.com/in/andrade-tiago">
+              <a href="https://www.linkedin.com/in/andrade-tiago" target="_blank">
                 <FaLinkedin />
               </a>
             </li>
             <li title="GitHub">
-              <a href="https://github.com/andrade-tiago">
+              <a href="https://github.com/andrade-tiago" target="_blank">
                 <FaGithub />
               </a>
             </li>
