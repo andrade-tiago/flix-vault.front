@@ -12,7 +12,6 @@ const searchIMDbMovie = async ({query, pageNumber}: searchIMDbMovieConfig) => {
       query,
       page: pageNumber,
       language: 'pt-BR',
-      include_adult: true,
     },
   })
 
