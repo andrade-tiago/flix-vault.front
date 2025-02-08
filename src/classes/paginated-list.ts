@@ -1,5 +1,3 @@
-import IMDbPaginatedList from "@/interfaces/imdb-api/imdb-paginated-list";
-
 export default class PaginatedList<T> {
   constructor(
     readonly data: T[],
