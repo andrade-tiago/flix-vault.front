@@ -1,5 +1,6 @@
 import { FaGithub, FaLinkedin } from "react-icons/fa"
 import logo from "/Logo.png"
+import { Link } from "react-router-dom"
 
 export default function Footer() {
   const currentYear = new Date().getFullYear()
@@ -9,10 +10,12 @@ export default function Footer() {
     <footer className="p-8 border-t-gray-900 border-t-2 border-dashed">
       <div className="flex flex-col md:flex-row gap-8 justify-between items-center w-full max-w-screen-lg mx-auto">
         <div className="flex flex-col gap-4 items-center">
-          <img
-            src={logo}
-            className="h-24"
-          />
+          <Link to="/">
+            <img
+              src={logo}
+              className="h-24"
+            />
+          </Link>
 
           <p>
             Copyright &copy; {currentYear} FlixVault, Tiago Andrade
@@ -32,12 +35,14 @@ export default function Footer() {
           </ul>
         </div>
 
-        <div className="flex flex-col gap-4 max-w-96">
-          <img
-            className="max-h-12"
-            src={imdbLogoURL}
-            alt="IMDb logo"
-          />
+        <div className="flex flex-col gap-4 max-w-96 items-center">
+          <a href="https://www.themoviedb.org/" target="_blank">
+            <img
+              className="h-12"
+              src={imdbLogoURL}
+              alt="TMDB logo"
+            />
+          </a>
 
           <p className="text-gray-500">
             Esta aplicação usa o TMDB e as APIs do TMDB, mas não é endossado, certificado ou aprovado pelo TMDB.
