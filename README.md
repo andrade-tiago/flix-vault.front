@@ -1,23 +1,33 @@
 # :clapper: Flix Vault :popcorn:
 
-Este é o front-end do Flix Vault, uma aplicação de catálogo de filmes onde você pode pesquisar e verificar os detalhes do seu filme favorito. :clapper::heart:
+<center>
+  <img
+    src="./public/Logo.png"
+    height="100"
+  />
+</center>
 
-<img
-  src="./public/screenshot.png"
-  alt=""
-  title="Tela de detalhes do filme"
-/>
+Seja bem-vindo ao Flix Vault, uma aplicação de catálogo de filmes onde você pode pesquisar e verificar os detalhes do seu filme favorito. :clapper::heart:
+
+<center>
+  <img
+    src="./public/screenshot.png"
+    title="Tela de detalhes do filme"
+  />
+</center>
 
 ## :hammer_and_wrench: Features
 
- - [x] Filmes
- - [x] Séries (implementado parcialmente)
+ - [x] Recomendações de filmes
  - [x] Detalhes do filme
- - [x] Detalhes da série (implementado parcialmente)
- - [ ] Busca de filmes
- - [ ] Busca de séries
+ - [x] Filmes relacionados
+ - [x] Busca de filmes
 
-## :computer: Como rodar o projeto
+## Onde acessar?
+
+Você pode acessá-lo [aqui](https://flix-vault-front.vercel.app).
+
+## :computer: Como rodar localmente
 
 Pré-requisito: ter o [Node.js](https://nodejs.org/en) instalado em seu ambiente.
 
