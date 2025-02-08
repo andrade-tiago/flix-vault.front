@@ -54,9 +54,9 @@ export default function MoviePage() {
   useEffect(() => {
     const stateText = movie
       ? `assistir a "${movie.title}"`
-      : "Carregando..."
+      : "carregando..."
 
-    document.title = `FlixVault: ${stateText}"`
+    document.title = `FlixVault: ${stateText}`
 
     window.scroll({ top: 0, behavior: 'smooth' })
   }, [movie])
