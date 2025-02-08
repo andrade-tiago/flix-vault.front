@@ -1,4 +1,5 @@
 import { FaGithub, FaLinkedin } from "react-icons/fa"
+import logo from "@/img/Logo.png"
 
 export default function Footer() {
   const currentYear = new Date().getFullYear()
@@ -8,6 +9,11 @@ export default function Footer() {
     <footer className="p-8 border-t-gray-900 border-t-2 border-dashed">
       <div className="flex flex-col md:flex-row gap-8 justify-between items-center w-full max-w-screen-lg mx-auto">
         <div className="flex flex-col gap-4 items-center">
+          <img
+            src={logo}
+            className="h-24"
+          />
+
           <p>
             Copyright &copy; {currentYear} FlixVault, Tiago Andrade
           </p>
@@ -28,7 +34,7 @@ export default function Footer() {
 
         <div className="flex flex-col gap-4 max-w-96">
           <img
-            className="max-h-16"
+            className="max-h-12"
             src={imdbLogoURL}
             alt="IMDb logo"
           />

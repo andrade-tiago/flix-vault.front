@@ -28,12 +28,13 @@ export default function SearchBar() {
       onReset={handleReset}
       className="
         border-gray-600 border-[1px] rounded-md
-        w-full max-w-96 flex items-center gap-1 px-2
+        flex flex-1 max-w-sm items-center gap-1 px-2
         text-gray-400
       "
     >
       <IoMdSearch className="text-2xl" />
-      <input ref={searchInput}
+      <input
+        ref={searchInput}
         type="text"
         placeholder="Buscar filme..."
         className="p-2 flex-1 bg-transparent text-gray-400 outline-none"
