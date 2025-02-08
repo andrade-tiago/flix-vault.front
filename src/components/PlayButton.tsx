@@ -4,13 +4,13 @@ import { twMerge } from "tailwind-merge"
 
 interface PlayButtonProps {
   movieId: number
-  className?: string
+  light?: boolean
 }
 
-export default function PlayButton({ movieId, className }: PlayButtonProps) {
+export default function PlayButton(props: PlayButtonProps) {
   return (
     <Link
-      to={`/movies/${movieId}`}
+      to={`/movies/${props.movieId}`}
       title="Assistir a este filme"
       className={twMerge(
         `bg-amber-500 text-amber-950
@@ -19,7 +19,7 @@ export default function PlayButton({ movieId, className }: PlayButtonProps) {
         text-sm font-medium shadow-2xl outline-none
         focus:outline-dashed focus:outline-1
         focus:outline-gray-300 w-min`,
-        className,
+        props.light ? "shadow-amber-500" : null,
       )}
     >
       <FaPlay className="size-4" />

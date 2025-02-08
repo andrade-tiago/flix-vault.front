@@ -67,7 +67,7 @@ export default function Hero({ movie }: HeroProps) {
             {movie.overview}
           </p>
 
-          <PlayButton movieId={movie.id} className="shadow-amber-500" />
+          <PlayButton movieId={movie.id} light />
 
           <LuChevronDown className="mt-5" />
         </div>
