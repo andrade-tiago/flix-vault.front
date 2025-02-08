@@ -1,5 +1,5 @@
 import { FaGithub, FaLinkedin } from "react-icons/fa"
-import logo from "@/img/Logo.png"
+import logo from "/Logo.png"
 
 export default function Footer() {
   const currentYear = new Date().getFullYear()

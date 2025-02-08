@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import SearchBar from "./SearchBar";
-import logo from "@/img/Logo.png"
+import logo from "/Logo.png"
 
 export default function Header() {
   return (
