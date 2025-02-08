@@ -1,7 +1,7 @@
-import { FunctionComponent, HTMLProps } from "react";
+import { FunctionComponent, HTMLAttributes } from "react";
 import { twMerge } from "tailwind-merge";
 
-type ContentSectionProps = HTMLProps<HTMLSelectElement>
+type ContentSectionProps = HTMLAttributes<HTMLElement>
 
 const ContentSection: FunctionComponent<ContentSectionProps> = (props) => {
   return (

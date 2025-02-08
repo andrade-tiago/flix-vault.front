@@ -3,6 +3,7 @@ import MovieOverview from "@/classes/movie-overview";
 import { useMediaBackdropImgURL } from "@/hooks/use-images";
 import { BackdropSizes } from "@/services/imdb-api/imdb-images";
 import MovieData from "./MovieData";
+import { motion } from "framer-motion";
 
 interface FeaturedMovieProps {
   movie: MovieOverview
@@ -17,15 +18,22 @@ export default function FeaturedMovie({ movie }: FeaturedMovieProps) {
   })
 
   return (
-    <section
-      className="relative py-20 flex px-5 sm:px-10
-      md:px-20 lg:px-28 bg-gradient-to-r from-gray-950
-      to-gray-950/40 items-center min-h-[500px]"
+    <motion.section
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      className="
+        relative py-20 flex px-5 sm:px-10
+        md:px-20 lg:px-28 bg-gradient-to-r from-gray-950
+      to-gray-950/40 items-center min-h-[500px]
+      "
     >
       {movieBackdropImgURL && (
-        <img
-          src={movieBackdropImgURL} alt=""
+        <motion.img
+          src={movieBackdropImgURL}
           className="absolute w-full h-full object-cover -z-10 top-0 left-0 opacity-50"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: .5 }}
         />
       )}
 
@@ -42,6 +50,6 @@ export default function FeaturedMovie({ movie }: FeaturedMovieProps) {
 
         <PlayButton movieId={movie.id} />
       </div>
-    </section>
+    </motion.section>
   ) 
 }

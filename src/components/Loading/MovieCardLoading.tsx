@@ -1,4 +1,6 @@
 import { AnimatePresence, motion } from 'framer-motion'
+import ContentLoading from './ContentLoading'
+import MovieDataLoading from './MovieDataLoading'
 
 function MovieCardLoading() {
   return (
@@ -9,15 +11,11 @@ function MovieCardLoading() {
         animate={{ y: 0, opacity: 1 }}
         exit={{ y: -20, opacity: 0 }}
       >
-        <div className="w-full h-64 rounded-xl bg-gray-600/30 animate-pulse" />
+        <ContentLoading className="w-full h-64 rounded-xl" />
 
-        <div className="w-2/3 h-4 bg-gray-600/30 rounded-md animate-pulse" />
+        <ContentLoading className="w-2/3 h-4" />
 
-        <div className="flex justify-between">
-          <div className="h-4 w-10 bg-gray-600/30 rounded-md animate-pulse" />
-          <div className="h-4 w-10 bg-gray-600/30 rounded-md animate-pulse" />
-          <div className="h-4 w-16 bg-gray-600/30 rounded-md animate-pulse" />
-        </div>
+        <MovieDataLoading />
       </motion.div>
     </AnimatePresence>
   )

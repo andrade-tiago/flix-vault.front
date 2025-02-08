@@ -6,6 +6,7 @@ import { IMDbMovieListEndpoint } from "@/enums/imdb/imdb-movie-list-endpoint";
 import MovieCarousel from "@/components/MovieCarousel";
 import HeroLoading from "@/components/Loading/HeroLoading";
 import ContentSection from "@/components/ContentSection";
+import FeaturedMovieLoading from "@/components/Loading/FeaturedMovieLoading";
 
 export default function HomePage() {
   const inTheatersMovieList = useMovieOverviewList(IMDbMovieListEndpoint.InTheaters)
@@ -32,8 +33,10 @@ export default function HomePage() {
         <MovieCarousel movieList={inTheatersMovieList.data?.slice(2)} />
       </ContentSection>
 
-      {inTheatersMovieList.data && (inTheatersMovieList.data.length > 1) && (
+      {inTheatersMovieList.data && (inTheatersMovieList.data.length > 1) ? (
         <FeaturedMovie movie={inTheatersMovieList.data[1]} />
+      ) : (
+        <FeaturedMovieLoading />
       )}
 
       <ContentSection>
