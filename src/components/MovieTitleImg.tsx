@@ -18,7 +18,7 @@ const MovieTitleImg: FunctionComponent<MovieTitleImgProps> = (props) => {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         exit={{ opacity: 0 }}
-        transition={{ delay: 1 }}
+        transition={{ delay: .5, duration: 1 }}
       />
     </AnimatePresence>
   )

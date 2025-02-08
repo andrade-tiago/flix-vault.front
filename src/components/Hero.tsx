@@ -5,6 +5,7 @@ import { BackdropSizes, TitleSizes } from "@/services/imdb-api/imdb-images"
 import { LuChevronDown } from "react-icons/lu"
 import MovieData from "./MovieData"
 import { motion } from "framer-motion"
+import MovieTitleImg from "./MovieTitleImg"
 
 interface HeroProps {
   movie: MovieOverview
@@ -46,14 +47,9 @@ export default function Hero({ movie }: HeroProps) {
         <div className="max-w-2xl mx-auto flex items-center gap-5 flex-col">
           <h3 className="font-medium text-5xl text-center">
             {movieTitleImgURL ? (
-              <motion.img
-                src={movieTitleImgURL}
-                alt={movie.title}
-                title={movie.title}
-                className="max-w-full max-h-32"
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ duration: 1, delay: .5 }}
+              <MovieTitleImg
+                imgURL={movieTitleImgURL}
+                movieTitle={movie.title}
               />
             ) : movie.title}
           </h3>
