@@ -79,6 +79,12 @@ export default function Carousel({ children }: CarouselProps) {
     }
   }, [])
 
+  useEffect(() => {
+    offset.current = 0
+
+    controls.start({ x: 0, transition: { duration: .3 } })
+  }, [children, controls])
+
   return (
     <div
       ref={carouselWrapper}
